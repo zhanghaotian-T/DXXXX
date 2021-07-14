@@ -3,21 +3,52 @@ import re
 
 class ResultDeal(object):
     def __init__(self):
-        self.report = dict()
-        self.aclr_l1 = list()
-        self.aclr_ui = list()
-        self.tx_mean_power = list()
-        self.evm = list()
-        self.ccdf = list()
-        self.test_model = dict()
-        self.channel = dict()
-        self.aclr_l1_index_pre = 0
-        self.aclr_ui_index_pre = 0
+        self.report = list()
+        self.ant = 'ANT_1'
+        self.test_model = None
+        self.channel = None
+        self.aclr_l1_pre = 0
+        self.aclr_u1_pre = 0
 
     def run(self):
         pass
 
-    # def file_open(self):
+    def file_open(self):
+        with open('Result_log/ResultsLog.txt') as f:
+            for index, line in enumerate(f):
+                if 'Test Model' in line:
+                    self.test_model = re.findall(r'LTE_ETM[0-9]_\w+', line)[0]
+                if "Channel#" in line:
+                    self.channel = re.findall(r'[0-9]+', line)[0]
+                if ("ACLR_EUTRA_L1" in line) and (index - self.aclr_l1_pre != 8):
+                    aclr_l1 = re.findall(r'[0-9]+.[0-9]+', line)[0]
+                    self.report.append(self.ant + '_' + self.test_model + '_' + self.channel + '_' + aclr_l1)
+                    self.aclr_l1_pre = index
+                if ('ACLR_EUTRA_U1' in line) and (index - self.aclr_u1_pre != 8):
+                    aclr_u1 = re.findall(r'[0-9]+.[0-9]+', line)[0]
+                    self.report.append(self.ant + '_' + self.test_model + '_' + self.channel + '_' + aclr_u1)
+                    self.aclr_u1_pre = index
+
+
+
+
+    def key_word_fil(self):
+        pass
+
+    def line_key_word(self, line):
+        try:
+            channel = re.findall(r'Channel#	\s*[0-9]*', line)
+            alcr_l1 = re.findall(r'ACLR_EUTRA_L1:\s*[0-9]*.[0-9]*', line)
+            aclr_ui = re.findall(r'ACLR_EUTRA_U1:\s*[0-9]*.[0-9]*', line)
+            tx_mean_power = re.findall(r'Tx Mean Power Average\S*\s*[0-9]*.[0-9]*', line)
+            evm = re.findall(r'')
+            evm_average = 0
+            ccdf = 0
+
+        except Exception as e:
+            return None
+
+# def file_open(self):
     #     with open('Result_log/ResultsLog.txt') as f:
     #         self.report["ResultsLog"] = {}
     #         for index, line in enumerate(f):
@@ -70,29 +101,6 @@ class ResultDeal(object):
     #                 self.ccdf.append(ccdf)
     #                 self.report['ResultsLog'][test_model][channel]['CCDF Power Level at 0.1%'] = self.ccdf
     #     return self.report
-
-    def file_open(self):
-        with open('Result_log/ResultsLog.txt') as f:
-                self.report["ResultsLog"] = {}
-                for index, line in enumerate(f):
-
-                    pass
-
-    def key_word_fil(self):
-        pass
-
-    def line_key_word(self, line):
-        try:
-            channel = re.findall(r'Channel#	\s*[0-9]*', line)
-            alcr_l1 = re.findall(r'ACLR_EUTRA_L1:\s*[0-9]*.[0-9]*', line)
-            aclr_ui = re.findall(r'ACLR_EUTRA_U1:\s*[0-9]*.[0-9]*', line)
-            tx_mean_power = re.findall(r'Tx Mean Power Average\S*\s*[0-9]*.[0-9]*', line)
-            evm = re.findall(r'')
-            evm_average = 0
-            ccdf = 0
-
-        except Exception as e:
-            return None
 
 
 if __name__ == '__main__':
