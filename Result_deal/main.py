@@ -17,15 +17,12 @@ class ResultDeal(object):
         file_path_list = self.file_ergodic()
         for file_path in file_path_list:
             self.file_open(file_path)
-        print(file_path_list)
         self.save_report_log(self.report)
 
     def file_open(self, file_path):
-        print(file_path)
         self.sn = re.findall(r'\\.*.txt', file_path)[0][1: -4]
         with open(file_path, encoding='UTF-8', errors='replace') as f:
             for index, line in enumerate(f):
-                print(line)
                 if 'Test Model' in line:
                     self.test_model = re.findall(r'LTE_ETM[0-9]_\w+', line)[0]
                 if "Channel#" in line:
@@ -59,18 +56,15 @@ class ResultDeal(object):
         return self.report
 
     def save_report_log(self, result_list: list):
-        print(result_list)
         result_list_dataframe = [x.split(';') for x in result_list]
         final_result = pd.DataFrame(result_list_dataframe,
                                     columns=['SN', 'ANT', 'Test_Model', 'Frequency', 'Test_Case', 'Result'])
         if not os.path.exists(r'Report'):
             os.makedirs(r'Report')
-            final_result.to_csv(r'Report/Result_Report.csv', encoding='utf-8')
-            print(final_result)
+            final_result.to_csv(r'Report/Result_Report.csv', encoding='utf-8', index=False)
         else:
-            final_result.to_csv(r'\Report\Result_Report.csv')
-            print(final_result)
-            
+            final_result.to_csv(r'Report/Result_Report.csv', index=False)
+
     def file_ergodic(self):
         file_path_main = 'Result_log'
         path_list = list()
@@ -83,4 +77,5 @@ class ResultDeal(object):
 if __name__ == '__main__':
     a = ResultDeal()
     a.run()
+    print('Data processing completed')
     input()

@@ -1,0 +1,403 @@
+DLL Version: 1.0.404.002
+*** TxMeanPowerAvg Measured From Signal Analyzer:-0.06 ***   
+********** TX ACLR - Test Results **********
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM1_1
+Channel#				1300
+ACLR_EUTRA_L1:			51.26
+ACLR_EUTRA_L2:			76.75
+ACLR_EUTRA_U1:			43.33
+ACLR_EUTRA_U2:			76.00
+ACLR_UTRA_L1:			50.61
+ACLR_UTRA_L2:			73.23
+ACLR_UTRA_U1:			44.63
+ACLR_UTRA_U2:			52.32
+ACLR_EUTRA_L1:			51.26
+ACLR_EUTRA_L2:			76.75
+ACLR_EUTRA_U1:			43.33
+ACLR_EUTRA_U2:			76.00
+ACLROffset1_EUTRA_MHz:		20.00
+ACLROffset2_EUTRA_MHz:		40.00
+ACLROffset1_UTRA_MHz:		2.50
+ACLROffset2_UTRA_MHz:		7.50
+Tx Analog Gain State for Path 1:		12
+Tx Analog Gain State for Path 2:		-999
+Tx Digital Gain State for Path 1:		11
+Tx Digital Gain State for Path 2:		-999
+Tx PA1 ADC Value:			29606
+Tx PA2 ADC Value:			29809
+Tx PA3 ADC Value:			33695
+Tx PA4 ADC Value:			33650
+Tx Mean Power Average(dBm):		44.90
+Tx Power Margin(dB):			-0.60
+TSSI Power(dBm):			44.58
+TSSI Margin(dB):			0.32
+Tx FS Metric:				-15.65
+Rx FS Metric:				-16.69
+DPD ACLR Left(dBm):			50.0
+DPD ACLR Right(dBm):			48.3
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM1_1
+Channel#				1325
+ACLR_EUTRA_L1:			53.88
+ACLR_EUTRA_L2:			76.32
+ACLR_EUTRA_U1:			52.49
+ACLR_EUTRA_U2:			75.98
+ACLR_UTRA_L1:			54.13
+ACLR_UTRA_L2:			67.54
+ACLR_UTRA_U1:			52.80
+ACLR_UTRA_U2:			67.56
+ACLR_EUTRA_L1:			53.88
+ACLR_EUTRA_L2:			76.32
+ACLR_EUTRA_U1:			52.49
+ACLR_EUTRA_U2:			75.98
+ACLROffset1_EUTRA_MHz:		20.00
+ACLROffset2_EUTRA_MHz:		40.00
+ACLROffset1_UTRA_MHz:		2.50
+ACLROffset2_UTRA_MHz:		7.50
+Tx Analog Gain State for Path 1:		12
+Tx Analog Gain State for Path 2:		-999
+Tx Digital Gain State for Path 1:		-3
+Tx Digital Gain State for Path 2:		-999
+Tx PA1 ADC Value:			29544
+Tx PA2 ADC Value:			29757
+Tx PA3 ADC Value:			33694
+Tx PA4 ADC Value:			33651
+Tx Mean Power Average(dBm):		45.02
+Tx Power Margin(dB):			-0.48
+TSSI Power(dBm):			44.43
+TSSI Margin(dB):			0.59
+Tx FS Metric:				-15.87
+Rx FS Metric:				-16.74
+DPD ACLR Left(dBm):			50.5
+DPD ACLR Right(dBm):			49.2
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM1_1
+Channel#				1350
+ACLR_EUTRA_L1:			54.72
+ACLR_EUTRA_L2:			76.58
+ACLR_EUTRA_U1:			57.03
+ACLR_EUTRA_U2:			76.29
+ACLR_UTRA_L1:			55.45
+ACLR_UTRA_L2:			62.53
+ACLR_UTRA_U1:			56.12
+ACLR_UTRA_U2:			76.26
+ACLR_EUTRA_L1:			54.72
+ACLR_EUTRA_L2:			76.58
+ACLR_EUTRA_U1:			57.03
+ACLR_EUTRA_U2:			76.29
+ACLROffset1_EUTRA_MHz:		20.00
+ACLROffset2_EUTRA_MHz:		40.00
+ACLROffset1_UTRA_MHz:		2.50
+ACLROffset2_UTRA_MHz:		7.50
+Tx Analog Gain State for Path 1:		12
+Tx Analog Gain State for Path 2:		-999
+Tx Digital Gain State for Path 1:		-20
+Tx Digital Gain State for Path 2:		-999
+Tx PA1 ADC Value:			29522
+Tx PA2 ADC Value:			29729
+Tx PA3 ADC Value:			33695
+Tx PA4 ADC Value:			33650
+Tx Mean Power Average(dBm):		44.91
+Tx Power Margin(dB):			-0.59
+TSSI Power(dBm):			44.37
+TSSI Margin(dB):			0.54
+Tx FS Metric:				-16.02
+Rx FS Metric:				-16.79
+DPD ACLR Left(dBm):			50.6
+DPD ACLR Right(dBm):			50.1
+DPD Result:				1
+********** END OF TX ACLR RESULTS **********
+------------------------------------------------------------------------------------------------------------------------------------------------------
+*** TxMeanPowerAvg Measured From Signal Analyzer:23.98 ***   
+********** LTE TX Modulation Test Results **********
+------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM3_1
+Channel#				1300
+Tx Power Margin			-0.48
+TSSI Margin				0.49
+Tx Mean Power Average(dBm):		45.02
+TSSI Power(dBm):			44.53
+FrequencyErrorAverage(Hz):		0.88
+FrequencyErrorAverage(PPM):		0.0005
+EVM Average:				3.07
+EVM Peak:				14.12
+DLRSPower(dBm):			14.23
+DLRSPowerError(dB):			0.48
+OSTP Average(dBm):			45.06
+Origin Offset Average:			-45.94
+CCDF Power Level at 0.1% (dB):		7.45
+CCDF Power Level at 0.01% (dB):	7.74
+Tx Analog Gain State for Path 1:		12
+Tx Analog Gain State for Path 2:		-999
+Tx Digital Gain State for Path 1:		29
+Tx Digital Gain State for Path 2:		-999
+Tx PA1 ADC Value:			29430
+Tx PA2 ADC Value:			29651
+Tx PA3 ADC Value:			33694
+Tx PA4 ADC Value:			33648
+Tx FS Metric:				-15.49
+Rx FS Metric:				-16.72
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM3_1
+Channel#				1325
+Tx Power Margin			-0.56
+TSSI Margin				0.71
+Tx Mean Power Average(dBm):		44.94
+TSSI Power(dBm):			44.23
+FrequencyErrorAverage(Hz):		-1.15
+FrequencyErrorAverage(PPM):		-0.0006
+EVM Average:				2.73
+EVM Peak:				13.34
+DLRSPower(dBm):			14.13
+DLRSPowerError(dB):			0.58
+OSTP Average(dBm):			44.96
+Origin Offset Average:			-45.79
+CCDF Power Level at 0.1% (dB):		7.59
+CCDF Power Level at 0.01% (dB):	7.79
+Tx Analog Gain State for Path 1:		12
+Tx Analog Gain State for Path 2:		-999
+Tx Digital Gain State for Path 1:		11
+Tx Digital Gain State for Path 2:		-999
+Tx PA1 ADC Value:			29396
+Tx PA2 ADC Value:			29620
+Tx PA3 ADC Value:			33695
+Tx PA4 ADC Value:			33648
+Tx FS Metric:				-15.69
+Rx FS Metric:				-16.80
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM3_1
+Channel#				1350
+Tx Power Margin			-0.59
+TSSI Margin				0.7
+Tx Mean Power Average(dBm):		44.91
+TSSI Power(dBm):			44.21
+FrequencyErrorAverage(Hz):		-0.37
+FrequencyErrorAverage(PPM):		-0.0002
+EVM Average:				2.74
+EVM Peak:				12.90
+DLRSPower(dBm):			14.10
+DLRSPowerError(dB):			0.61
+OSTP Average(dBm):			44.93
+Origin Offset Average:			-45.70
+CCDF Power Level at 0.1% (dB):		7.60
+CCDF Power Level at 0.01% (dB):	7.87
+Tx Analog Gain State for Path 1:		12
+Tx Analog Gain State for Path 2:		-999
+Tx Digital Gain State for Path 1:		-5
+Tx Digital Gain State for Path 2:		-999
+Tx PA1 ADC Value:			29340
+Tx PA2 ADC Value:			29570
+Tx PA3 ADC Value:			33693
+Tx PA4 ADC Value:			33648
+Tx FS Metric:				-15.87
+Rx FS Metric:				-16.85
+DPD Result:				1
+********** END OF LTE Tx MODULATION RESULTS **********
+------------------------------------------------------------------------------------------------------------------------
+DLL Version: 1.0.404.002
+*** TxMeanPowerAvg Measured From Signal Analyzer:-0.24 ***   
+********** TX ACLR - Test Results **********
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM1_1
+Channel#				1300
+ACLR_EUTRA_L1:			48.78
+ACLR_EUTRA_L2:			77.02
+ACLR_EUTRA_U1:			43.37
+ACLR_EUTRA_U2:			76.36
+ACLR_UTRA_L1:			48.34
+ACLR_UTRA_L2:			70.58
+ACLR_UTRA_U1:			45.40
+ACLR_UTRA_U2:			52.43
+ACLR_EUTRA_L1:			48.78
+ACLR_EUTRA_L2:			77.02
+ACLR_EUTRA_U1:			43.37
+ACLR_EUTRA_U2:			76.36
+ACLROffset1_EUTRA_MHz:		20.00
+ACLROffset2_EUTRA_MHz:		40.00
+ACLROffset1_UTRA_MHz:		2.50
+ACLROffset2_UTRA_MHz:		7.50
+Tx Analog Gain State for Path 1:		-999
+Tx Analog Gain State for Path 2:		12
+Tx Digital Gain State for Path 1:		-999
+Tx Digital Gain State for Path 2:		-36
+Tx PA1 ADC Value:			29343
+Tx PA2 ADC Value:			29596
+Tx PA3 ADC Value:			33682
+Tx PA4 ADC Value:			33631
+Tx Mean Power Average(dBm):		44.39
+Tx Power Margin(dB):			-0.61
+TSSI Power(dBm):			43.84
+TSSI Margin(dB):			0.55
+Tx FS Metric:				-16.17
+Rx FS Metric:				-16.52
+DPD ACLR Left(dBm):			51.5
+DPD ACLR Right(dBm):			50.3
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM1_1
+Channel#				1325
+ACLR_EUTRA_L1:			55.48
+ACLR_EUTRA_L2:			77.43
+ACLR_EUTRA_U1:			55.66
+ACLR_EUTRA_U2:			76.33
+ACLR_UTRA_L1:			55.89
+ACLR_UTRA_L2:			67.84
+ACLR_UTRA_U1:			55.50
+ACLR_UTRA_U2:			71.21
+ACLR_EUTRA_L1:			55.48
+ACLR_EUTRA_L2:			77.43
+ACLR_EUTRA_U1:			55.66
+ACLR_EUTRA_U2:			76.33
+ACLROffset1_EUTRA_MHz:		20.00
+ACLROffset2_EUTRA_MHz:		40.00
+ACLROffset1_UTRA_MHz:		2.50
+ACLROffset2_UTRA_MHz:		7.50
+Tx Analog Gain State for Path 1:		-999
+Tx Analog Gain State for Path 2:		12
+Tx Digital Gain State for Path 1:		-999
+Tx Digital Gain State for Path 2:		-32
+Tx PA1 ADC Value:			29308
+Tx PA2 ADC Value:			29549
+Tx PA3 ADC Value:			33677
+Tx PA4 ADC Value:			33634
+Tx Mean Power Average(dBm):		44.51
+Tx Power Margin(dB):			-0.49
+TSSI Power(dBm):			44.06
+TSSI Margin(dB):			0.45
+Tx FS Metric:				-16.15
+Rx FS Metric:				-16.24
+DPD ACLR Left(dBm):			51.9
+DPD ACLR Right(dBm):			50.6
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM1_1
+Channel#				1350
+ACLR_EUTRA_L1:			53.83
+ACLR_EUTRA_L2:			77.41
+ACLR_EUTRA_U1:			62.13
+ACLR_EUTRA_U2:			76.19
+ACLR_UTRA_L1:			55.03
+ACLR_UTRA_L2:			62.34
+ACLR_UTRA_U1:			60.08
+ACLR_UTRA_U2:			77.81
+ACLR_EUTRA_L1:			53.83
+ACLR_EUTRA_L2:			77.41
+ACLR_EUTRA_U1:			62.13
+ACLR_EUTRA_U2:			76.19
+ACLROffset1_EUTRA_MHz:		20.00
+ACLROffset2_EUTRA_MHz:		40.00
+ACLROffset1_UTRA_MHz:		2.50
+ACLROffset2_UTRA_MHz:		7.50
+Tx Analog Gain State for Path 1:		-999
+Tx Analog Gain State for Path 2:		13
+Tx Digital Gain State for Path 1:		-999
+Tx Digital Gain State for Path 2:		69
+Tx PA1 ADC Value:			29288
+Tx PA2 ADC Value:			29519
+Tx PA3 ADC Value:			33682
+Tx PA4 ADC Value:			33632
+Tx Mean Power Average(dBm):		44.38
+Tx Power Margin(dB):			-0.62
+TSSI Power(dBm):			44.16
+TSSI Margin(dB):			0.22
+Tx FS Metric:				-15.12
+Rx FS Metric:				-16.20
+DPD ACLR Left(dBm):			51.7
+DPD ACLR Right(dBm):			51.4
+DPD Result:				1
+********** END OF TX ACLR RESULTS **********
+------------------------------------------------------------------------------------------------------------------------------------------------------
+*** TxMeanPowerAvg Measured From Signal Analyzer:23.79 ***   
+********** LTE TX Modulation Test Results **********
+------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM3_1
+Channel#				1300
+Tx Power Margin			-0.87
+TSSI Margin				0.56
+Tx Mean Power Average(dBm):		44.13
+TSSI Power(dBm):			43.57
+FrequencyErrorAverage(Hz):		1.12
+FrequencyErrorAverage(PPM):		0.0006
+EVM Average:				2.86
+EVM Peak:				14.68
+DLRSPower(dBm):			13.33
+DLRSPowerError(dB):			0.88
+OSTP Average(dBm):			44.17
+Origin Offset Average:			-49.96
+CCDF Power Level at 0.1% (dB):		7.52
+CCDF Power Level at 0.01% (dB):	7.80
+Tx Analog Gain State for Path 1:		-999
+Tx Analog Gain State for Path 2:		12
+Tx Digital Gain State for Path 1:		-999
+Tx Digital Gain State for Path 2:		-26
+Tx PA1 ADC Value:			29304
+Tx PA2 ADC Value:			29506
+Tx PA3 ADC Value:			33680
+Tx PA4 ADC Value:			33632
+Tx FS Metric:				-16.08
+Rx FS Metric:				-15.73
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM3_1
+Channel#				1325
+Tx Power Margin			-0.83
+TSSI Margin				0.59
+Tx Mean Power Average(dBm):		44.17
+TSSI Power(dBm):			43.58
+FrequencyErrorAverage(Hz):		-1.94
+FrequencyErrorAverage(PPM):		-0.0011
+EVM Average:				2.70
+EVM Peak:				12.53
+DLRSPower(dBm):			13.35
+DLRSPowerError(dB):			0.86
+OSTP Average(dBm):			44.19
+Origin Offset Average:			-49.37
+CCDF Power Level at 0.1% (dB):		7.64
+CCDF Power Level at 0.01% (dB):	7.84
+Tx Analog Gain State for Path 1:		-999
+Tx Analog Gain State for Path 2:		12
+Tx Digital Gain State for Path 1:		-999
+Tx Digital Gain State for Path 2:		-27
+Tx PA1 ADC Value:			29292
+Tx PA2 ADC Value:			29507
+Tx PA3 ADC Value:			33681
+Tx PA4 ADC Value:			33630
+Tx FS Metric:				-16.09
+Rx FS Metric:				-15.63
+DPD Result:				1
+------------------------------------------------------------------------------------------------------------------------
+Test Model:				LTE_ETM3_1
+Channel#				1350
+Tx Power Margin			-1.25
+TSSI Margin				0.4
+Tx Mean Power Average(dBm):		43.75
+TSSI Power(dBm):			43.35
+FrequencyErrorAverage(Hz):		2.08
+FrequencyErrorAverage(PPM):		0.0011
+EVM Average:				2.69
+EVM Peak:				12.64
+DLRSPower(dBm):			12.94
+DLRSPowerError(dB):			1.27
+OSTP Average(dBm):			43.77
+Origin Offset Average:			-50.74
+CCDF Power Level at 0.1% (dB):		7.69
+CCDF Power Level at 0.01% (dB):	7.98
+Tx Analog Gain State for Path 1:		-999
+Tx Analog Gain State for Path 2:		12
+Tx Digital Gain State for Path 1:		-999
+Tx Digital Gain State for Path 2:		-67
+Tx PA1 ADC Value:			29310
+Tx PA2 ADC Value:			29502
+Tx PA3 ADC Value:			33679
+Tx PA4 ADC Value:			33634
+Tx FS Metric:				-16.49
+Rx FS Metric:				-15.96
+DPD Result:				1
+********** END OF LTE Tx MODULATION RESULTS **********
+------------------------------------------------------------------------------------------------------------------------
+DLL Version: 1.0.404.002
