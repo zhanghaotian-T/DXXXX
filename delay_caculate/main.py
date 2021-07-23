@@ -14,14 +14,15 @@ class DelayCaculate(QMainWindow):
 
     def run(self):
         self.promt_message()
-        self.caculate_time()
+        self.primary_caculate_time()
 
     def promt_message(self):
         self.ui.lineEdit.setText('0x507')
+        self.ui.lineEdit_2.setText(chr(0x0075) + 's')
         # self.ui.lineEdit.setReadOnly(True)
         # self.ui.lineEdit.setStyleSheet("color: gray")
 
-    def caculate_time(self):
+    def primary_caculate_time(self):
         primary_time_source = self.ui.lineEdit.text()
         primary_time_hex = primary_time_source[2:]
         primary_time_int = int(primary_time_hex, 16)
@@ -34,6 +35,15 @@ class DelayCaculate(QMainWindow):
             self.ui.comboBox.setCurrentText('Delay')
             primary_time = round((primary_time_int / 122.88), 2)
             self.ui.lineEdit_3.setText(str(primary_time) + chr(0x0075) + 's')
+
+    def caculate_time(self):
+        if self.ui.checkBox.checkState() == 1:
+            delta_time = self.ui.lineEdit_2.text()[:-2]
+            
+
+            pass
+        if self.ui.checkBox_2.checkState() == 1:
+            pass
 
 
 if __name__ == '__main__':
