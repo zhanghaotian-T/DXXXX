@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(445, 262)
+        MainWindow.resize(550, 327)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_3 = QGridLayout(self.centralwidget)
@@ -32,16 +32,6 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName(u"label_2")
 
         self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
-
-        self.label = QLabel(self.groupBox)
-        self.label.setObjectName(u"label")
-
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
-
-        self.lineEdit = QLineEdit(self.groupBox)
-        self.lineEdit.setObjectName(u"lineEdit")
-
-        self.gridLayout.addWidget(self.lineEdit, 1, 0, 1, 1)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setSpacing(6)
@@ -61,6 +51,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setStretch(1, 3)
 
         self.gridLayout.addLayout(self.horizontalLayout_3, 3, 0, 1, 1)
+
+        self.label = QLabel(self.groupBox)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+
+        self.lineEdit = QLineEdit(self.groupBox)
+        self.lineEdit.setObjectName(u"lineEdit")
+
+        self.gridLayout.addWidget(self.lineEdit, 1, 0, 1, 1)
+
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer)
+
+        self.pushButton = QPushButton(self.groupBox)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout_4.addWidget(self.pushButton)
+
+
+        self.gridLayout.addLayout(self.horizontalLayout_4, 4, 0, 1, 1)
 
 
         self.horizontalLayout_2.addWidget(self.groupBox)
@@ -140,7 +154,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 445, 22))
+        self.menubar.setGeometry(QRect(0, 0, 550, 22))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -156,6 +170,7 @@ class Ui_MainWindow(object):
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Primary_delay", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Insert_Current_Delay", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Generate", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"Input_times", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"Advance", None))
         self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Delay", None))
