@@ -14,7 +14,7 @@ class DelayCaculate(QMainWindow):
 
     def run(self):
         self.promt_message()
-        self.ui.pushButton.clicked.connect(self.primary_caculate_time)
+        self.ui.pushButton.clicked.connect(self.detect_input)
         self.ui.lineEdit_2.returnPressed.connect(self.caculate_time)
 
     def promt_message(self):
@@ -22,8 +22,18 @@ class DelayCaculate(QMainWindow):
         self.ui.lineEdit_2.setText(chr(0x0075) + 's')
         self.ui.lineEdit_3.setText(chr(0x0075) + 's')
         self.ui.comboBox.addItems(['Forward', 'Delay'])
+        self.resize(400, 250)
         # self.ui.lineEdit.setReadOnly(True)
         # self.ui.lineEdit.setStyleSheet("color: gray")
+
+    def detect_input(self):
+        try:
+            if len(self.ui.lineEdit.text()) > 2:
+                self.primary_caculate_time()
+            elif len(self.ui.lineEdit_3.text()) > 2:
+                self.time_to_hex()
+        except Exception as e:
+            print(e)
 
     def primary_caculate_time(self):
         try:
@@ -41,6 +51,18 @@ class DelayCaculate(QMainWindow):
                 self.ui.lineEdit_3.setText(str(primary_time) + chr(0x0075) + 's')
         except Exception as e:
             print(e)
+
+    def time_to_hex(self):
+        fix_time = self.ui.comboBox.currentText()
+        caculate_time = self.ui.lineEdit_3.text()[:-2]
+        if fix_time == 'Forward':
+            clock_times = 65536 - round(float(caculate_time) * 122.88)
+            self.ui.lineEdit.setText(hex(int(clock_times)))
+        elif fix_time == 'Delay':
+            clock_times = round(float(caculate_time) * 122.88)
+            self.ui.lineEdit.setText(hex(int(clock_times)))
+        else:
+            raise 'the input is not wanted'
 
     def caculate_time(self):
         self.primary_caculate_time()
