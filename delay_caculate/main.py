@@ -22,8 +22,10 @@ class DelayCaculate(QMainWindow):
         self.ui.lineEdit_2.setText(chr(0x0075) + 's')
         self.ui.lineEdit_3.setText(chr(0x0075) + 's')
         self.ui.comboBox.addItems(['Forward', 'Delay'])
-        # self.ui.lineEdit.setReadOnly(True)
-        # self.ui.lineEdit.setStyleSheet("color: gray")
+
+    def first_check(self):
+        self.ui.lineEdit.text()
+        pass
 
     def primary_caculate_time(self):
         try:
