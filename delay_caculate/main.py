@@ -40,7 +40,6 @@ class DelayCaculate(QMainWindow):
             primary_time_source = self.ui.lineEdit.text()
             primary_time_hex = primary_time_source[2:]
             primary_time_int = int(primary_time_hex, 16)
-            self.ui.comboBox.addItems(['Forward', 'Delay'])
             if primary_time_int >= 6140:
                 self.ui.comboBox.setCurrentText('Forward')
                 primary_time = round(((65536 - primary_time_int) / 122.88), 2)
@@ -66,17 +65,38 @@ class DelayCaculate(QMainWindow):
 
     def caculate_time(self):
         self.primary_caculate_time()
-        primary_date_hex = self.ui.lineEdit.text()
+        primary_date_int = self.ui.lineEdit_3.text()[:-2]
+        primary_date_state = self.ui.comboBox.currentText()
         if self.ui.checkBox.checkState():
             delta_time_str = self.ui.lineEdit_2.text()[:-2]
-            date_time_int = float(delta_time_str) * 122.88
-            adv_result = hex(int(int(primary_date_hex, 16) + date_time_int))
-            self.ui.lineEdit_4.setText(adv_result)
+            if primary_date_state == 'Delay':
+                if delta_time_str > primary_date_int:
+                    caculate_time = float(delta_time_str) - float(primary_date_int)
+                    clock_times = 65536 - round(float(caculate_time) * 122.88)
+                    self.ui.lineEdit_4.setText(hex(int(clock_times)))
+                if delta_time_str <= primary_date_int:
+                    caculate_time = float(primary_date_int) - float(delta_time_str)
+                    clock_times = round(float(caculate_time) * 122.88)
+                    self.ui.lineEdit_4.setText(hex(int(clock_times)))
+            elif primary_date_state == 'Forward':
+                caculate_time = float(primary_date_int) + float(delta_time_str)
+                clock_times = 65536 - round(float(caculate_time) * 122.88)
+                self.ui.lineEdit_4.setText(hex(int(clock_times)))
         if self.ui.checkBox_2.checkState():
             delta_time_str = self.ui.lineEdit_2.text()[:-2]
-            date_time_int = float(delta_time_str) * 122.88
-            delay_result = hex(int(int(primary_date_hex, 16) - date_time_int))
-            self.ui.lineEdit_4.setText(delay_result)
+            if primary_date_state == 'Forward':
+                if delta_time_str > primary_date_int:
+                    caculate_time = float(delta_time_str) - float(primary_date_int)
+                    clock_times = round(float(caculate_time) * 122.88)
+                    self.ui.lineEdit_5.setText(hex(int(clock_times)))
+                else:
+                    caculate_time = float(primary_date_int) - float(delta_time_str)
+                    clock_times = round(float(caculate_time) * 122.88)
+                    self.ui.lineEdit_5.setText(hex(int(clock_times)))
+            elif primary_date_state == 'Delay':
+                caculate_time = float(primary_date_int) + float(delta_time_str)
+                clock_times = round(float(caculate_time) * 122.88)
+                self.ui.lineEdit_5.setText(hex(int(clock_times)))
 
 
 if __name__ == '__main__':
