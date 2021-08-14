@@ -91,7 +91,7 @@ class DelayCaculate(QMainWindow):
                     self.ui.lineEdit_5.setText(hex(int(clock_times)))
                 else:
                     caculate_time = float(primary_date_int) - float(delta_time_str)
-                    clock_times = round(float(caculate_time) * 122.88)
+                    clock_times = 65536 - round(float(caculate_time) * 122.88)
                     self.ui.lineEdit_5.setText(hex(int(clock_times)))
             elif primary_date_state == 'Delay':
                 caculate_time = float(primary_date_int) + float(delta_time_str)
