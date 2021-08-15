@@ -6,7 +6,7 @@
 @time: 2021/08/05
 """
 
-from bci import Bci
+from Driver.bci import Bci
 import logging
 logger = logging.getLogger(__name__)
 
