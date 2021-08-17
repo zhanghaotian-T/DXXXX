@@ -5,8 +5,12 @@
 # @Author    :Haotian
 import os
 import sys
+import logging
 from UI.Call_Systerm_Auto_Config import Ui_Call_systerm
-from PySide2.QtWidgets import QDialog, QApplication, QWidget, QMainWindow
+from PySide2.QtWidgets import QDialog, QApplication
+from bci import Bci
+
+logger = logging.getLogger(__name__)
 
 
 class SystermCall(QDialog):
@@ -23,6 +27,7 @@ class SystermCall(QDialog):
         self.ui.comboBox.addItems(_5gc_name_list)
         self.ui.comboBox_2.addItems(bbu_name_list)
         self.ui.comboBox_3.addItems(rru_name_list)
+        self.ui.pushButton.clicked.connect(self.rru_config_set)
 
     def config_file_name_get(self, path):
         file_name_list = list()
@@ -31,6 +36,18 @@ class SystermCall(QDialog):
         if len(file_name_list) == 0:
             file_name_list.append('None')
         return file_name_list
+
+    def rru_config_set(self):
+        file_root = './SystermConfigOrder/RRU_Config/'
+        rru = Bci(host='192.168.255.11', user='dg', password='passw0rd')
+        rru.connect()
+        logger.info('RRU Connect Finish')
+        file_path = file_root + self.ui.comboBox_3.currentText()
+        with open(file_path) as rru_config:
+            command_rru = rru_config.readline()
+            rru.send_common(command_rru)
+        logger.info('RRU Config Finish')
+        pass
 
 
 if __name__ == "__main__":

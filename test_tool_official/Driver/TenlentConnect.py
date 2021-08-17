@@ -67,5 +67,5 @@ if __name__ == '__main__':
     print('Python')
     ssh_tn = TelnetConnection(host=b'192.168.255.11', user=b'dg', password=b'passw0rd')
     ssh_tn.connect()
-    ssh_tn.send_common(b'bci')
+    ssh_tn.send_common(b'/pltf/bsp/write 2 0x33c0 0x083a881d')
 

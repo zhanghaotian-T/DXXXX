@@ -8,7 +8,7 @@
 
 import re
 import logging
-from TenlentConnect import TelnetConnection
+from Driver.TenlentConnect import TelnetConnection
 logger = logging.getLogger(__name__)
 
 
@@ -29,4 +29,6 @@ class Bci(TelnetConnection):
 
 
 if __name__ == '__main__':
+    a = Bci(host='192.168.255.11', user='dg', password='passw0rd')
+    a.send_common('/pltf/bsp/read 0 0x164')
     print('Python')
