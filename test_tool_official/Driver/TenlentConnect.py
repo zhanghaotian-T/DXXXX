@@ -25,7 +25,7 @@ class TelnetConnection(object):
 
     def _connect(self, prompt=b'>', timeout=5):
         try:
-            tn = Telnet(bytes(self.host))
+            tn = Telnet(self.host)
             logger.info('Start connect client')
             tn.read_until(b'login: ', timeout=timeout)
             tn.write(bytes(self.user) + b'\n')

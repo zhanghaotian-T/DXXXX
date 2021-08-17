@@ -15,6 +15,11 @@ class SshConnect(object):
         self.port = port
         self.user_name = user_name
         self.password = password
+        self.channel = None
+
+    def __del__(self):
+        if not self.ssh_connect:
+            self.ssh_connect.close()
 
     def _connect(self):
         if not self.ssh_connect:
@@ -22,6 +27,11 @@ class SshConnect(object):
 
     def connect(self):
         self._connect()
+
+    def set_commands(self):
+        self.channel = self.ssh_connect.invoke_shell()
+
+        pass
 
 
 if __name__ == '__main__':
