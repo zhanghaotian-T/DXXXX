@@ -39,7 +39,7 @@ class SystermCall(QDialog):
 
     def rru_config_set(self):
         file_root = './SystermConfigOrder/RRU_Config/'
-        rru = Bci(host='192.168.255.11', user='dg', password='passw0rd')
+        rru = Bci(host='192.168.255.1', user='dg', password='passw0rd')
         rru.connect()
         logger.info('RRU Connect Finish')
         file_path = file_root + self.ui.comboBox_3.currentText()

@@ -27,10 +27,10 @@ class TelnetConnection(object):
         try:
             tn = Telnet(self.host)
             logger.info('Start connect client')
-            tn.read_until(b'login: ', timeout=timeout)
-            tn.write(bytes(self.user) + b'\n')
+            tn.read_until(b'User login: ', timeout=timeout)
+            tn.write(bytes(self.user.encode()) + b'\n')
             tn.read_until(b'Password: ', timeout=timeout)
-            tn.write(bytes(self.password) + b'\n')
+            tn.write(bytes(self.password.encode()) + b'\n')
             tn.read_until(prompt, timeout=timeout)
             logger.info("Success to connect")
         except Exception as e:
@@ -53,7 +53,7 @@ class TelnetConnection(object):
     def send_common(self, command, prompt=b'>', wait_time=5):
         try:
             time.sleep(0.5)
-            self.telnet_obj.write(bytes(command) + b'\n')
+            self.telnet_obj.write(bytes(command.encode()) + b'\n')
             ret = self.telnet_obj.read_until(prompt, timeout=wait_time).decode('utf-8')
             ret = ret.splitlines()
             logger.info('Success to execute command({0})'.format(command))
