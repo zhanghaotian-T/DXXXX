@@ -50,6 +50,18 @@ class Ui_Call_systerm(object):
 
         self.verticalLayout.addWidget(self.groupBox_2)
 
+        self.groupBox_4 = QGroupBox(Call_systerm)
+        self.groupBox_4.setObjectName(u"groupBox_4")
+        self.gridLayout_9 = QGridLayout(self.groupBox_4)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.comboBox_4 = QComboBox(self.groupBox_4)
+        self.comboBox_4.setObjectName(u"comboBox_4")
+
+        self.gridLayout_9.addWidget(self.comboBox_4, 0, 0, 1, 1)
+
+
+        self.verticalLayout.addWidget(self.groupBox_4)
+
         self.groupBox_3 = QGroupBox(Call_systerm)
         self.groupBox_3.setObjectName(u"groupBox_3")
         self.gridLayout_3 = QGridLayout(self.groupBox_3)
@@ -57,7 +69,12 @@ class Ui_Call_systerm(object):
         self.comboBox_3 = QComboBox(self.groupBox_3)
         self.comboBox_3.setObjectName(u"comboBox_3")
 
-        self.gridLayout_3.addWidget(self.comboBox_3, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.comboBox_3, 1, 0, 1, 1)
+
+        self.comboBox_5 = QComboBox(self.groupBox_3)
+        self.comboBox_5.setObjectName(u"comboBox_5")
+
+        self.gridLayout_3.addWidget(self.comboBox_5, 0, 0, 1, 1)
 
 
         self.verticalLayout.addWidget(self.groupBox_3)
@@ -143,6 +160,7 @@ class Ui_Call_systerm(object):
         Call_systerm.setWindowTitle(QCoreApplication.translate("Call_systerm", u"Dialog", None))
         self.groupBox.setTitle(QCoreApplication.translate("Call_systerm", u"BBU_Type", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("Call_systerm", u"5GC_Type", None))
+        self.groupBox_4.setTitle(QCoreApplication.translate("Call_systerm", u"HUB", None))
         self.groupBox_3.setTitle(QCoreApplication.translate("Call_systerm", u"RRU_Type", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.widget), QCoreApplication.translate("Call_systerm", u"\u6838\u5fc3\u7f51", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.widget_2), QCoreApplication.translate("Call_systerm", u"BBU", None))
