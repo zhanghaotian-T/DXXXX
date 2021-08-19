@@ -78,7 +78,19 @@ class SystermCall(QDialog):
         hub.connect()
         file_path = file_root + self.ui.comboBox_4.currentText()
         hub_config = yaml.load(open(file_path))
+        while T
+        for key in hub_config.keys():
+            if key == 'TBM':
+                ret = hub.query_common(hub_config['Query'][key])
+                if ret == '100000':
+                    hub.
+            elif key == 'SFP':
+                ret = hub.query_common(hub_config['Query'][key])
+            elif key == 'CPPRI':
+                ret = hub.query_common(hub_config['Query'][key])
 
+
+    def set
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -27,6 +27,10 @@ class Bci(TelnetConnection):
     def get_into_bci(self):
         self._get_int0_bci()
 
+    def set_command_list(self, command_list):
+        for command in command_list:
+            self.send_common(command)
+
 
 if __name__ == '__main__':
     a = Bci(host='192.168.255.11', user='dg', password='passw0rd')

@@ -7,9 +7,8 @@
 """
 import time
 from telnetlib import Telnet
-import logging
+from loguru import logger
 
-logger = logging.getLogger(__name__)
 
 
 class TelnetConnection(object):
@@ -52,7 +51,7 @@ class TelnetConnection(object):
 
     def send_common(self, command, prompt=b'>', wait_time=5):
         try:
-            time.sleep(0.5)
+            time.sleep(0.2)
             self.telnet_obj.write(bytes(command.encode()) + b'\n')
             ret = self.telnet_obj.read_until(prompt, timeout=wait_time).decode('utf-8')
             ret = ret.splitlines()
@@ -61,6 +60,16 @@ class TelnetConnection(object):
             logger.info(e)
         else:
             return ret
+
+    def query_common(self, command, promt=b'>', wait_time=5):
+        try:
+            time.sleep(0.2)
+            self.telnet_obj.write(bytes(command.encode()) + b'\n')
+            ret = self.telnet_obj.read_until(prompt, timeout=wait_time).decode('utf-8')
+            ret = ret.splitlines()
+            logger.info('Success to execute command({0})'.format(command))
+        except Exception as e:
+            logger.info(e)
 
 
 if __name__ == '__main__':
