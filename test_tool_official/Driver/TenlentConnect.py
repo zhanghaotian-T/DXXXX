@@ -10,7 +10,6 @@ from telnetlib import Telnet
 from loguru import logger
 
 
-
 class TelnetConnection(object):
     def __init__(self, host, user, password, port=23):
         self.host = host
@@ -49,32 +48,43 @@ class TelnetConnection(object):
             self.telnet_obj = None
             logger.info(f"disconnected to remote host({self.host}:{self.port})")
 
-    def send_common(self, command, prompt=b'>', wait_time=5):
+    def send_common(self, command, prompt='>', wait_time=5):
         try:
             time.sleep(0.2)
             self.telnet_obj.write(bytes(command.encode()) + b'\n')
-            ret = self.telnet_obj.read_until(prompt, timeout=wait_time).decode('utf-8')
+            ret = self.telnet_obj.read_until(prompt.encode('utf8'), timeout=wait_time).decode('utf-8')
             ret = ret.splitlines()
-            logger.info('Success to execute command({0})'.format(command))
+            logger.info(f'Success to execute {command}')
         except Exception as e:
             logger.info(e)
         else:
             return ret
 
-    def query_common(self, command, promt=b'>', wait_time=5):
+    def query_common(self, command, prompt='>', wait_time=5):
         try:
+            if type(command) == list:
+                command = command[0]
             time.sleep(0.2)
             self.telnet_obj.write(bytes(command.encode()) + b'\n')
-            ret = self.telnet_obj.read_until(prompt, timeout=wait_time).decode('utf-8')
+            ret = self.telnet_obj.read_until(prompt.encode('utf-8'), timeout=wait_time).decode('utf-8')
+            logger.info(f'After write {command} Telnet Return {ret}')
             ret = ret.splitlines()
-            logger.info('Success to execute command({0})'.format(command))
+            ret = self.query_list_extract(ret)
+            logger.info(f'Success to execute {command}, return value {ret}')
         except Exception as e:
             logger.info(e)
+        else:
+            return ret
+
+    def query_list_extract(self, query_list):
+        for index, element in enumerate(query_list):
+            if 'command:CLI_OK' in element:
+                return query_list[index-1]
 
 
 if __name__ == '__main__':
-    print('Python')
-    ssh_tn = TelnetConnection(host=b'192.168.255.11', user=b'dg', password=b'passw0rd')
+    ssh_tn = TelnetConnection(host='192.168.255.11', user='dg', password='passw0rd')
     ssh_tn.connect()
-    ssh_tn.send_common(b'/pltf/bsp/write 2 0x33c0 0x083a881d')
+    b = ssh_tn.query_common('/pltf/bsp/read 2 0x33c0')
+
 

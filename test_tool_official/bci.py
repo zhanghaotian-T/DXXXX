@@ -20,9 +20,16 @@ class Bci(TelnetConnection):
         """初始化函数"""
         TelnetConnection.__init__(self, host, user, password, port)
         self.connect()
+        self.get_into_bci()
 
     def _get_int0_bci(self):
-        self.send_common(command='bci', prompt='login: ')
+        try:
+            self.send_common(command='bci', prompt='')
+            self.send_common(command='dg', prompt='User login: ')
+            self.send_common(command='passw0rd', prompt='Password: ')
+        except Exception as e:
+            logger.info(e)
+
 
     def get_into_bci(self):
         self._get_int0_bci()
@@ -34,5 +41,5 @@ class Bci(TelnetConnection):
 
 if __name__ == '__main__':
     a = Bci(host='192.168.255.11', user='dg', password='passw0rd')
-    a.send_common('/pltf/bsp/read 0 0x164')
-    print('Python')
+    b = a.query_common('/pltf/bsp/read 2 0x3068')
+    print('b')

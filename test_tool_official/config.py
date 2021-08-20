@@ -31,7 +31,7 @@ class SystermCall(QDialog):
         self.ui.comboBox_3.addItems(rru_name_list)
         self.ui.comboBox_4.addItems(hub_name_list)
         self.ui.comboBox_5.addItems(['O-RAN', '玄铁'])
-        self.ui.pushButton.clicked.connect(self.hub_config)
+        self.ui.pushButton.clicked.connect(self.hub_statue_query)
 
     def config_file_name_get(self, path):
         file_name_list = list()
@@ -73,24 +73,40 @@ class SystermCall(QDialog):
             hub.send_common(hub_config_command)
 
     def hub_statue_query(self):
+        sfp_status = False
+        tbm_status = False
+        cppri_status = False
         file_root = './SystermConfigOrder/HUB_Config/'
         hub = Bci(host='192.168.255.11', user='dg', password='passw0rd')
         hub.connect()
         file_path = file_root + self.ui.comboBox_4.currentText()
         hub_config = yaml.load(open(file_path))
-        while T
-        for key in hub_config.keys():
-            if key == 'TBM':
-                ret = hub.query_common(hub_config['Query'][key])
-                if ret == '100000':
-                    hub.
-            elif key == 'SFP':
-                ret = hub.query_common(hub_config['Query'][key])
-            elif key == 'CPPRI':
-                ret = hub.query_common(hub_config['Query'][key])
+        while True:
+            tbm_return = hub.query_common(hub_config['Query']['TBM'])
+            logger.info(f'Current TBM is {tbm_return}')
+            sfp_return = hub.query_common(hub_config['Query']['SFP'])
+            logger.info(f'Current SFP Return is {sfp_return}')
+            cppri_return = hub.query_common(hub_config['Query']['CPPRI'])
+            logger.info(f'Current Cppri Return is {cppri_return}')
+            if sfp_return == '000005':
+                sfp_status = True
+            else:
+                hub.set_command_list(hub_config['RESET']['SFP'])
+            if tbm_return == '1000001':
+                tbm_status = True
+            else:
+                hub.set_command_list(hub_config['RESET']['SFP'])
+            if cppri_return == '2010':
+                cppri_status = True
+            else:
+                for i in range(0, 3):
+                    hub.set_command_list(hub_config['RESET']['CPPRI'][i])
+                    cppri_return = hub.query_common(hub_config['Query']['CPPRI'])
+                    if cppri_return != '2010':
+                        continue
+            if sfp_status and tbm_status and cppri_status:
+                break
 
-
-    def set
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
