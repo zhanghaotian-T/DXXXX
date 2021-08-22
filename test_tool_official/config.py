@@ -9,9 +9,9 @@ import sys
 import yaml
 from loguru import logger
 from UI.Call_Systerm_Auto_Config import Ui_Call_systerm
+from PySide2 import     QtCore
 from PySide2.QtWidgets import QDialog, QApplication
 from bci import Bci
-
 
 
 class SystermCall(QDialog):
@@ -32,6 +32,12 @@ class SystermCall(QDialog):
         self.ui.comboBox_4.addItems(hub_name_list)
         self.ui.comboBox_5.addItems(['O-RAN', '玄铁'])
         self.ui.pushButton.clicked.connect(self.hub_statue_query)
+
+    def rru_log_print(self, rru_log):
+        self.ui.textBrowser.append(rru_log)
+        self.ui.cursor = self.ui.textBrowser.textCursor()
+        self.ui.textBrowser.moveCursor(self.ui.cursor.End)
+        QApplication.processEvents()
 
     def config_file_name_get(self, path):
         file_name_list = list()
