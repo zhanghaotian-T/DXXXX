@@ -1,0 +1,13 @@
+5GC_Type:
+  Type: 中电
+  IP: 10.88.120.200
+BBU_Type:
+  Type: 中电
+  IP: 10.88.120.160
+HUB_Type:
+  Type: O-RAN
+  IP: 192.168.255.11
+RRU_Type:
+  Type: O-RAN
+  IP: 192.168.255.1
+
