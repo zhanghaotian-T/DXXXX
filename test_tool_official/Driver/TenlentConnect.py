@@ -60,11 +60,11 @@ class TelnetConnection(object):
         else:
             return ret
 
-    def query_common(self, command, prompt='>', wait_time=5):
+    def query_common(self, command, prompt='>', wait_time=5, waitting_time=0.2):
         try:
             if type(command) == list:
                 command = command[0]
-            time.sleep(0.2)
+            time.sleep(waitting_time)
             self.telnet_obj.write(bytes(command.encode()) + b'\n')
             ret = self.telnet_obj.read_until(prompt.encode('utf-8'), timeout=wait_time).decode('utf-8')
             logger.info(f'After write {command} Telnet Return {ret}')
