@@ -14,6 +14,8 @@ from bci import Bci
 import threading
 from PySide2.QtWidgets import QErrorMessage
 
+logger.add(sink=QErrorMessage.qtHandler)
+
 
 class SystermCall(threading.Thread):
     def __init__(self, threadname):
@@ -24,8 +26,11 @@ class SystermCall(threading.Thread):
         self.rru_config = None
 
     def run(self):
-        self.systerm_config_get()
-        self.systerm_element_config()
+        # self.systerm_config_get()
+        # self.systerm_element_config()
+        logger.info('11111')
+        message = QErrorMessage()
+        message.show()
 
     def systerm_config_get(self):
         config_yaml_path = r'./Config/Type_Config.yaml'
@@ -69,7 +74,6 @@ class SystermCall(threading.Thread):
         tbm_status = False
         cppri_status = False
         if agreement == 'Cppri':
-
             pass
         elif agreement == 'Ecppri':
             pass
@@ -79,4 +83,5 @@ class SystermCall(threading.Thread):
 
 if __name__ == "__main__":
     print('线程运行')
+
 
