@@ -34,7 +34,7 @@ class SlackQueueListener(QueueListener, Handler):
         self.emit(record)
 
 
-logger.add(SlackQueueHandler)
+logger.configure(handlers=SlackQueueHandler)
 logger.info('plesa')
 
 
