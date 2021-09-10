@@ -34,8 +34,17 @@ class SlackQueueListener(QueueListener, Handler):
         self.emit(record)
 
 
-logger.configure(handlers=SlackQueueHandler)
-logger.info('plesa')
+config = \
+    {
+    "handlers": [
+        {"sink": SlackQueueHandler, "format": "{time} - {message}"},
+        {"sink": "file.log", "serialize": True},
+    ],
+    "extra": {"user": "someone"}
+    }
+
+logger.configure(**config)
+
 
 
 class TestLog(object):
@@ -57,6 +66,6 @@ class TestLog(object):
 
 
 if __name__ == 'main':
-    a = TestLog()
+    logger.info('aaaaaa')
     print('hello')
 
