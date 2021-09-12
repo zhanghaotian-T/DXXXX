@@ -10,6 +10,7 @@ from loguru import logger
 from logging import Handler
 from logging.handlers import QueueHandler
 from logging.handlers import QueueListener
+from queue import Queue
 
 
 class SlackQueueHandler(QueueHandler):
@@ -20,6 +21,7 @@ class SlackQueueHandler(QueueHandler):
         record.msg = self.format(record)
         record.args = None
         record.exc_info = None
+        return record.msg
 
 
 class SlackQueueListener(QueueListener, Handler):
@@ -34,38 +36,35 @@ class SlackQueueListener(QueueListener, Handler):
         self.emit(record)
 
 
-config = \
-    {
-    "handlers": [
-        {"sink": SlackQueueHandler, "format": "{time} - {message}"},
-        {"sink": "file.log", "serialize": True},
-    ],
-    "extra": {"user": "someone"}
-    }
+class LoggerThread(threading.Thread):
+    def __init__(self, threadname):
+        threading.Thread.__init__(self, name='Threading' + threadname)
+        self.logger_queue = Queue(2000)
+        self.logger_queue_listener = None
 
-logger.configure(**config)
+    def run(self):
+        logger_handler = SlackQueueHandler(self.logger_queue)
+        logger.add(logger_handler)
 
-
-
-class TestLog(object):
-    def __init__(self):
-        self.handler = None
-        self.mylogger = None
-        self.creat_handler()
-        self.creat_logger()
-        logger.info('load message')
-
-    def creat_handler(self):
-        pass
-
-    def creat_logger(self):
-        self.mylogger = logging.getLogger()
-
-    def log(self, msg):
-        self.mylogger.info(msg)
+    def get_logger(self):
+        self.logger_queue_listener = SlackQueueListener(self.logger_queue)
+        logger_message = self.logger_queue_listener.queue.get()
+        return logger_message
 
 
-if __name__ == 'main':
-    logger.info('aaaaaa')
-    print('hello')
+if __name__ == "__main__":
+    # a = Queue(10)
+    # b = SlackQueueHandler(a)
+    # logger.add(b)
+    # c = SlackQueueListener(a)
+    # logger.info('bbbbbbb')
+    # logger.info('aaaaaa')
+    # d = c.queue.get()
+    # print('hello')
+    a = LoggerThread('LoggerCollection')
+    a.start()
+    logger.info('aaaaaaa')
+    logger.info('bbbbbbb')
+    b = a.get_logger()
+    print(b)
 
