@@ -64,6 +64,8 @@ class SystermCall(threading.Thread):
             logger.error('Please Check RRU Type, The RRU Type is Error')
 
     def statue_query(self, file_path, agreement):
+        adv_9508_statue = False
+        idt_statues = False
         sfp_status = False
         tbm_status = False
         cppri_status = False

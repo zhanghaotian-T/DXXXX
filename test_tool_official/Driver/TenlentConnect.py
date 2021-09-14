@@ -48,9 +48,9 @@ class TelnetConnection(object):
             self.telnet_obj = None
             logger.info(f"disconnected to remote host({self.host}:{self.port})")
 
-    def send_common(self, command, prompt='>', wait_time=5):
+    def send_common(self, command, prompt='>', wait_time=0.2):
         try:
-            time.sleep(0.2)
+            time.sleep(wait_time)
             self.telnet_obj.write(bytes(command.encode()) + b'\n')
             ret = self.telnet_obj.read_until(prompt.encode('utf8'), timeout=wait_time).decode('utf-8')
             ret = ret.splitlines()
