@@ -9,9 +9,8 @@ import os
 import sys
 import yaml
 from loguru import logger
-from bci import Bci
 import threading
-from PySide2.QtWidgets import QErrorMessage
+from Driver.RruDriver import RruDriver
 
 
 class SystermCall(threading.Thread):
@@ -56,6 +55,7 @@ class SystermCall(threading.Thread):
         pass
 
     def rru_query_and_set(self):
+        rru_connect = RruDriver()
         if self.rru_config['Type'] == '玄铁':
             pass
         elif self.rru_config['Type'] == 'O-RAN':
