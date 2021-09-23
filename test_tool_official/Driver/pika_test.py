@@ -17,6 +17,13 @@ channel.basic_publish(exchange='',
                       routing_key='hello',
                       body='hello world')
 
+channel.basic_publish(exchange='',
+                      routing_key='hello',
+                      body='yes')
+
+channel.basic_publish(exchange='',
+                      routing_key='hello',
+                      body='no')
 print('[x] sent hello world')
 
 connection.close()
