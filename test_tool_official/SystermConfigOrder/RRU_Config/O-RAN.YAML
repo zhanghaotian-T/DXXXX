@@ -20,13 +20,3 @@ RESET:
   SFP:
     - /pltf/bsp/write 2 0x3008 0x21
     - /pltf/bsp/write 2 0x3008 0x20
-  CPPRI:
-    0:
-      - /pltf/bsp/write 2 0x8864 0x1
-      - /pltf/bsp/write 2 0x8864 0x0
-    1:
-      - /pltf/bsp/write 2 0x880c 0x1
-      - /pltf/bsp/write 2 0x880c 0x0
-    2:
-      - /pltf/bsp/write 2 0x8810 0x1
-      - /pltf/bsp/write 2 0x8810 0x0

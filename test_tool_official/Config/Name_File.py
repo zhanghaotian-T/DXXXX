@@ -9,5 +9,12 @@ RRU_TYPE = 'RRU_Type'
 TYPE = 'Type'
 IP = 'IP'
 
+RRU_QUEUE = 'RRU Queue'
+RRU_ACtion = 'RRU action'
+
+READ = 'read'
+WRITE = 'write'
+MONITOR = 'monitor'
+
 if __name__ == "__main__":
     run_code = 0
