@@ -37,8 +37,6 @@ class PublishThread(object):
 
 if __name__ == "__main__":
     a = PublishThread()
-    a.send_message(RRU_QUEUE, 'a')
-    a.send_message(RRU_QUEUE, 'b')
-    a.send_message(RRU_QUEUE, 'c')
-    a.send_message(RRU_QUEUE, 'd')
-    a.send_message(RRU_QUEUE, 'e')
+    a.send_message(RRU_QUEUE, {RRU_ACtion: 'Read',
+                               RRU_Action_Type: ['SFP', 'TBM', 'CPPRI'],
+                               RRU_Action_Message: None})

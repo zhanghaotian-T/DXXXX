@@ -11,6 +11,14 @@ IP = 'IP'
 
 RRU_QUEUE = 'RRU Queue'
 RRU_ACtion = 'RRU action'
+RRU_Action_Type = 'RRU_Action_Type'
+RRU_Action_Message = 'RRU_Action_Message'
+
+_5GC_QUEUE = '5GC Queue'
+
+BBU_QUEUE_X3 = 'BBU X3 Thread'
+BBU_QUEUE_X4 = 'BBU X4 Thread'
+BBU_QUEUE_Through_Put = 'BBU Through Put Thread'
 
 READ = 'read'
 WRITE = 'write'

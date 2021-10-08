@@ -1,0 +1,6 @@
+START:
+  Write:
+    - cd /home/gnb ./setup_fpga.sh
+  Monite:
+    - cd /home/gnb ./x 3
+  Write:

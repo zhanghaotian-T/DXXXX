@@ -30,7 +30,6 @@ class Bci(TelnetConnection):
         except Exception as e:
             logger.info(e)
 
-
     def get_into_bci(self):
         self._get_int0_bci()
 

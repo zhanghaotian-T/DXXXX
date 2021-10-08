@@ -31,8 +31,6 @@ class SshConnect(object):
     def set_commands(self):
         self.channel = self.ssh_connect.invoke_shell()
 
-        pass
-
 
 if __name__ == '__main__':
     print('Python')
