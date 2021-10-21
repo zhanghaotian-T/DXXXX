@@ -44,7 +44,7 @@ class RruThread(threading.Thread):
         print('进入队列获取程序')
         if body_message[RRU_ACtion] == 'Read':
             self.rru_read(body_message)
-        elif body_message[RRU_ACtion] == 'WRITE':
+        elif body_message[RRU_ACtion] == 'Write':
             self.rru_write(body_message)
         elif body_message[RRU_ACtion] == 'Monitor':
             self.rru_monitor(body_message)
@@ -58,17 +58,31 @@ class RruThread(threading.Thread):
     def rru_read(self, message):
         rru_read_config = self.rru_config['Read']
         try:
-            if message[RRU_Action_Type]:
-                for read_name in message[RRU_Action_Type]:
-                    for common in rru_read_config[read_name]:
-                        rru_read_result = self.rru.query_common(common)
-                        logger.info('RRU Read Type{}, RRU Read {},\n Return {}'.format(read_name, common, rru_read_result))
-            if message[RRU_Action_Message]:
-                for message_common in message[RRU_Action_Message]:
-                    rru_read_result = self.rru.query_common(message_common)
-                    logger.info('RRU Read {},\n Return {}'.format(message_common, rru_read_result))
+            if message[RRU_Action_Type] == WRITE_SINGLE:
+                pass
+            elif message[RRU_Action_Type] == WRITE_MODEL:
+                pass
+            elif message[RRU_Action_Type] == WRITE_ALL:
+                pass
+            else:
+                logger.info(f'The input RRU action type {message[RRU_Action_Type]} is error')
         except Exception as error:
-            logger.info('The RRU Read Common is Error : {}'.format(error))
+            logger.info(f'rru action filter is error {error}')
+
+
+        # rru_read_config = self.rru_config['Read']
+        # try:
+        #     if message[RRU_Action_Type]:
+        #         for read_name in message[RRU_Action_Type]:
+        #             for common in rru_read_config[read_name]:
+        #                 rru_read_result = self.rru.query_common(common)
+        #                 logger.info('RRU Read Type{}, RRU Read {},\n Return {}'.format(read_name, common, rru_read_result))
+        #     if message[RRU_Action_Message]:
+        #         for message_common in message[RRU_Action_Message]:
+        #             rru_read_result = self.rru.query_common(message_common)
+        #             logger.info('RRU Read {},\n Return {}'.format(message_common, rru_read_result))
+        # except Exception as error:
+        #     logger.info('The RRU Read Common is Error : {}'.format(error))
 
     def rru_write(self, message):
         rru_write_config = self.rru_config['Write']

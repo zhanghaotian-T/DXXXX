@@ -4,6 +4,7 @@
 # @Time      :2021/9/23 23:22
 # @Author    :Haotian
 import json
+import os
 
 from kombu import Connection, Exchange, Producer, Queue
 from Config.Name_File import *
@@ -26,6 +27,7 @@ class PublishThread(object):
             channel = self.connection.channel()
             self.exchange = Exchange(self.exchange_name, type='direct')
             self.puducer = Producer(exchange=self.exchange, channel=channel, routing_key=self.route_key)
+            os.popen('rabbitmqctl purge_queue "RRU Queue"')
 
     def send_message(self, queue_name, message):
         self.queue = Queue(name=queue_name, exchange=self.exchange, routing_key=self.route_key)

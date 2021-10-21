@@ -14,6 +14,10 @@ RRU_ACtion = 'RRU action'
 RRU_Action_Type = 'RRU_Action_Type'
 RRU_Action_Message = 'RRU_Action_Message'
 
+WRITE_SINGLE = 'WriteSigle'
+WRITE_MODEL = 'WriteModel'
+WRITE_ALL = 'WriteALL'
+
 _5GC_QUEUE = '5GC Queue'
 
 BBU_QUEUE_X3 = 'BBU X3 Thread'
