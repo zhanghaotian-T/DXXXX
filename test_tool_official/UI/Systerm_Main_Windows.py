@@ -20,11 +20,9 @@ class Ui_SystermMainWindow(object):
     def setupUi(self, SystermMainWindow):
         if not SystermMainWindow.objectName():
             SystermMainWindow.setObjectName(u"SystermMainWindow")
-        SystermMainWindow.resize(498, 325)
+        SystermMainWindow.resize(498, 611)
         self.gridLayout = QGridLayout(SystermMainWindow)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.groupBox = QGroupBox(SystermMainWindow)
@@ -81,15 +79,22 @@ class Ui_SystermMainWindow(object):
         self.horizontalLayout.addWidget(self.groupBox_2)
 
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout)
+        self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
 
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.textBrowser = QTextBrowser(SystermMainWindow)
         self.textBrowser.setObjectName(u"textBrowser")
 
         self.verticalLayout_4.addWidget(self.textBrowser)
 
+        self.widget = QWidget(SystermMainWindow)
+        self.widget.setObjectName(u"widget")
 
-        self.gridLayout.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
+        self.verticalLayout_4.addWidget(self.widget)
+
+
+        self.gridLayout.addLayout(self.verticalLayout_4, 1, 0, 1, 1)
 
 
         self.retranslateUi(SystermMainWindow)

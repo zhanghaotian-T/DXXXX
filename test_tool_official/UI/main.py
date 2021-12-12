@@ -28,6 +28,8 @@ class SystermGui(QDialog):
                                          f"IP: {systerm_confige_message[config]['IP']}\n")
 
 
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     my_window = SystermGui()
