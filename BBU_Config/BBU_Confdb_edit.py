@@ -4,41 +4,37 @@
 # @Time      :2021/12/11 21:02
 # @Author    :Haotian
 import os
+import re
 import xml.etree.ElementTree as ET
 import yaml
+from bs4 import BeautifulSoup
 
 
 class BbuconfdbReconfig(object):
 
-    def __init__(self):
+    def __init__(self, file_path):
         self.config_message = None
-        self.tree = None
-        self.root = None
-        pass
+        self.conf_path = file_path
+        self.soup = None
 
     def run(self):
-        self.message_get()
-        self.bbu_confdb_analyse()
+        self.conf_get()
+        self.conf_replace('services', '41')
 
     def message_get(self):
         self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
 
-    def bbu_confdb_analyse(self):
-        file_name = [os.path.join(root, files[0]) for root, dirs, files in os.walk(r'BBUconfdb', topdown=False) if len(files) == 1 ]
-        if not self.tree:
-            self.tree = ET.parse(file_name[0])
-            self.root = self.tree.getroot()
-        self.confdb_service_frequency_edit()
+    def conf_get(self):
+        if not self.soup:
+            self.soup = BeautifulSoup(open(self.conf_path), features="lxml-xml")
+            print(self.soup.name)
 
-    def confdb_service_frequency_edit(self):
-        print(self.root.tag)
-        # service_band = self.root.findall(r'.//services:band')
-        service_frequency1 = self.root.findall(r'.//services')
-        service_frequency = self.root.findall(r'.//ssb-frequency')
-        pass
+    def conf_replace(self, key_name, replaced_string):
+        for tag in self.soup.find_all(name=key_name):
+            tag.string = replaced_string
 
 
 if __name__ == "__main__":
-    BBU_reconfig = BbuconfdbReconfig()
+    BBU_reconfig = BbuconfdbReconfig('C:\HomeWork\DXXXX\BBU_Config\BBUconfdb\confdb.xml_2.6')
     BBU_reconfig.run()
 
