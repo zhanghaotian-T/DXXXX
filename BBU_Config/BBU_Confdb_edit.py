@@ -4,6 +4,7 @@
 # @Time      :2021/12/11 21:02
 # @Author    :Haotian
 import os
+import re
 import xml.etree.ElementTree as ET
 import yaml
 from bs4 import BeautifulSoup
@@ -11,20 +12,26 @@ from bs4 import BeautifulSoup
 
 class BbuconfdbReconfig(object):
 
-    def __init__(self, conf_path):
-        self.conf_path = conf_path
+    def __init__(self, file_path):
+        self.config_message = None
+        self.conf_path = file_path
         self.soup = None
 
-
     def run(self):
-        pass
+        self.conf_get()
+        self.conf_replace('services', '41')
 
-    def conf_open(self, file_path):
+    def message_get(self):
+        self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
+
+    def conf_get(self):
         if not self.soup:
-            self.soup = BeautifulSoup(file_path, 'xml')
+            self.soup = BeautifulSoup(open(self.conf_path), features="lxml-xml")
+            print(self.soup.name)
 
-    def key_worlds_replace(self, key_world, replace_worl):
-        self.soup.findall(key_world)
+    def conf_replace(self, key_name, replaced_string):
+        for tag in self.soup.find_all(name=key_name):
+            tag.string = replaced_string
 
     # def message_get(self):
     #     self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
