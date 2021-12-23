@@ -6,39 +6,35 @@
 import os
 import xml.etree.ElementTree as ET
 import yaml
+from bs4 import BeautifulSoup
 
 
 class BbuconfdbReconfig(object):
 
-    def __init__(self):
-        self.config_message = None
-        self.tree = None
-        self.root = None
-        pass
+    def __init__(self, conf_path):
+        self.conf_path = conf_path
+        self.soup = None
+
 
     def run(self):
-        self.message_get()
-        self.bbu_confdb_analyse()
-
-    def message_get(self):
-        self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
-
-    def bbu_confdb_analyse(self):
-        file_name = [os.path.join(root, files[0]) for root, dirs, files in os.walk(r'BBUconfdb', topdown=False) if len(files) == 1 ]
-        if not self.tree:
-            self.tree = ET.parse(file_name[0])
-            self.root = self.tree.getroot()
-        self.confdb_service_frequency_edit()
-
-    def confdb_service_frequency_edit(self):
-        print(self.root.tag)
-        # service_band = self.root.findall(r'.//services:band')
-        service_frequency1 = self.root.findall(r'.//services')
-        service_frequency = self.root.findall(r'.//ssb-frequency')
         pass
+
+    def conf_open(self, file_path):
+        if not self.soup:
+            self.soup = BeautifulSoup(file_path, 'xml')
+
+    def key_worlds_replace(self, key_world, replace_worl):
+        self.soup.findall(key_world)
+
+    # def message_get(self):
+    #     self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
+    #
+    # def bbu_confdb_analyse(self):
+    #     file_name = [os.path.join(root, files[0]) for root, dirs, files in os.walk(r'BBUconfdb', topdown=False) if len(files) == 1 ]
+    #     soup = BeautifulSoup(file_name[0], 'xml')
 
 
 if __name__ == "__main__":
-    BBU_reconfig = BbuconfdbReconfig()
+    BBU_reconfig = BbuconfdbReconfig('D:\python\DXXXX\BBU_Config\BBUconfdb\confdb.xml')
     BBU_reconfig.run()
 
