@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-# @FileName  :Confdb_edit.py
+# @FileName  :xml_edit.py
 # @Time      :2021/12/11 21:02
 # @Author    :Haotian
 import os
@@ -35,6 +35,6 @@ class BbuconfdbReconfig(object):
 
 
 if __name__ == "__main__":
-    BBU_reconfig = BbuconfdbReconfig('/BBUconfdb/confdb.xml_2.6')
+    BBU_reconfig = BbuconfdbReconfig('/BBUconfdb/confdb.xml')
     BBU_reconfig.run()
 

@@ -1,7 +1,18 @@
-BBU_IP: 169.169.20.160
+amf-ipv4-address: 169.169.20.175
 SERVICE_BAND: 79
 SSB: 50117
 point-a: 777001
 reference_frequency: 111000
 amf_ip: 169.169.20.175
 
+
+amf-ipv4-address
+ssb-subcarrier-offset
+absolute-frequency-ssb
+absolute-frequency-point-a
+plmn-id
+band
+ssb-frequency
+ref-frequency-csi-rs
+pdcch-config-sib1
+pusch_addtiona
