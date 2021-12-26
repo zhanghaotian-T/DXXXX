@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-# @FileName  :BBU_Confdb_edit.py
+# @FileName  :Confdb_edit.py
 # @Time      :2021/12/11 21:02
 # @Author    :Haotian
 import os
@@ -22,7 +22,7 @@ class BbuconfdbReconfig(object):
         self.conf_replace('services', '41')
 
     def message_get(self):
-        self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
+        self.config_message = yaml.load(open('../BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
 
     def conf_get(self):
         if not self.soup:
@@ -35,6 +35,6 @@ class BbuconfdbReconfig(object):
 
 
 if __name__ == "__main__":
-    BBU_reconfig = BbuconfdbReconfig('C:\HomeWork\DXXXX\BBU_Config\BBUconfdb\confdb.xml_2.6')
+    BBU_reconfig = BbuconfdbReconfig('/BBUconfdb/confdb.xml_2.6')
     BBU_reconfig.run()
 
