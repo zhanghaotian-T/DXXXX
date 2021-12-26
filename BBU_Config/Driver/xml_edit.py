@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-# @FileName  :BBU_Confdb_edit.py
+# @FileName  :xml_edit.py
 # @Time      :2021/12/11 21:02
 # @Author    :Haotian
 import os
@@ -22,7 +22,7 @@ class BbuconfdbReconfig(object):
         self.conf_replace('services', '41')
 
     def message_get(self):
-        self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
+        self.config_message = yaml.load(open('../BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
 
     def conf_get(self):
         if not self.soup:
@@ -33,15 +33,8 @@ class BbuconfdbReconfig(object):
         for tag in self.soup.find_all(name=key_name):
             tag.string = replaced_string
 
-    # def message_get(self):
-    #     self.config_message = yaml.load(open('BBUconfig.yaml', 'r', encoding='utf-8'), Loader=yaml.FullLoader)
-    #
-    # def bbu_confdb_analyse(self):
-    #     file_name = [os.path.join(root, files[0]) for root, dirs, files in os.walk(r'BBUconfdb', topdown=False) if len(files) == 1 ]
-    #     soup = BeautifulSoup(file_name[0], 'xml')
-
 
 if __name__ == "__main__":
-    BBU_reconfig = BbuconfdbReconfig('D:\python\DXXXX\BBU_Config\BBUconfdb\confdb.xml')
+    BBU_reconfig = BbuconfdbReconfig('/BBUconfdb/confdb.xml')
     BBU_reconfig.run()
 
