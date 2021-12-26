@@ -8,6 +8,7 @@
 
 from Driver.xml_edit import BbuconfdbReconfig
 from loguru import logger
+import yaml
 
 
 class CETCbbuEdite(BbuconfdbReconfig):
@@ -22,8 +23,7 @@ class CETCbbuEdite(BbuconfdbReconfig):
     def run(self):
         self.conf_get()
 
-    def complete_frequency_edit_dict(self, ssb_offset=None, abs_ssb_freq=None, abs_point_a=None, pdcch_config_sib=None):
-        freq_edite_dict = {}
+    def complete_frequency_edit_dict(self):
         if self.services_band == 41:
             ssb_offset = 6
             abs_ssb_freq = 504990
@@ -41,8 +41,21 @@ class CETCbbuEdite(BbuconfdbReconfig):
         else:
             logger.info('The service: {} is error'.format(self.services_band))
 
-    def dict_key_value_replace(self, replace_dict, key_world, replace_value):
+    def edit_dict_complete(self):
+        BBU_config = yaml.load(open('BBUconfig.yaml', encoding='utf-8'), Loader=yaml.FullLoader)
+        self.edit_dict = {'amf-ipv4-address': BBU_config['amf-ipv4-address'], 'band': BBU_config['band'],
+                          'reference_frequency': BBU_config['reference_frequency'], 'plmn-id': BBU_config['plmn-id']}
+
+        for single_message in []:
+            if single_message in BBU_config.keys():
+                self.edit_dict[single_message] = BBU_config[single_message]
         pass
+
+
+    def dict_key_value_replace(self, replace_dict, replace_file):
+
+        pass
+
 
 if __name__ == '__main__':
     print('Python')
