@@ -1,11 +1,10 @@
-amf-ipv4-address: 169.169.20.175
-band: 41
-plmn-id: 26203
+services:amf-ipv4-address: 169.169.20.110
+services:band: 79
+services:plmn-id: 26203
+services:extend-tracking-area-code: 4386
 
-#ssb-subcarrier-offset :
-#absolute-frequency-ssb:
-#absolute-frequency-point-a :
-#ssb-frequency:
-#ref-frequency-csi-rs:
-#pdcch-config-sib1:
-#pusch_addtiona:
+#services:ssb-subcarrier-offset :
+#services:absolute-frequency-ssb:
+#services:absolute-frequency-point-a :
+#services:ssb-frequency:
+#services:pdcch-config-sib1:.
