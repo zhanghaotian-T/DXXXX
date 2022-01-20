@@ -10,11 +10,13 @@ import threading
 import pika
 from kombu import Connection, Queue
 from Common_name import *
+from CoreNet_Thread import CoreNetworkThread
 
 
 class ControlMessage(threading.Thread):
     def __init__(self, thread_name):
         threading.Thread.__init__(self, name='Threading' + thread_name)
+        self.corenetwork = None
 
     def run(self):
         self._connection()
@@ -27,14 +29,15 @@ class ControlMessage(threading.Thread):
                 self.connection.drain_events()
 
     def message_kind(self, body_message, message):
-
-
-
-
+        # print(body_message)
+        if body_message[TARGET_Thread] == '5GC':
+            core_thread = CoreNetworkThread('core_network')
+            core_thread.thread_monitor()
         print(body_message, message)
+        message.ack()
 
 
 if __name__ == '__main__':
     a = ControlMessage('message_control')
-    a.start()
+    a.run()
     print('Python')
