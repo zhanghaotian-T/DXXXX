@@ -82,7 +82,7 @@ class CETCbbuEdite(BbuconfdbReconfig):
                     logger.info('The key of config yaml is error, please check the config file')
 
     def edit_dict_complete(self):
-        BBU_config = yaml.load(open('BBUconfig.yaml', encoding='utf-8'), Loader=yaml.FullLoader)
+        BBU_config = yaml.load(open('../BBUconfig.yaml', encoding='utf-8'), Loader=yaml.FullLoader)
         for key_message in BBU_config.keys():
             self.edit_dict[key_message] = BBU_config[key_message]
         self.complete_frequency_edit_dict()
@@ -96,5 +96,5 @@ class CETCbbuEdite(BbuconfdbReconfig):
 
 
 if __name__ == '__main__':
-    a = CETCbbuEdite('./BBUconfdb/confdb.xml')
+    a = CETCbbuEdite('../BBUconfdb/confdb.xml')
     a.run()

@@ -7,6 +7,7 @@
 """
 
 import threading
+from Common_name import *
 
 
 class BBUThread(threading.Thread):
@@ -14,6 +15,8 @@ class BBUThread(threading.Thread):
         threading.Thread.__init__(self, name='Threading' + thread_name)
 
     def thread_monitor(self, message_args=dict):
+        if message_args[MESSAGE_NAME] == 'config_modify':
+            pass
         print('我已经执行了')
         pass
 

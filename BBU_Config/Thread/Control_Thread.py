@@ -11,15 +11,24 @@ import pika
 from kombu import Connection, Queue
 from Common_name import *
 from CoreNet_Thread import CoreNetworkThread
+from BBU_Thread import BBUThread
 
 
 class ControlMessage(threading.Thread):
     def __init__(self, thread_name):
         threading.Thread.__init__(self, name='Threading' + thread_name)
         self.corenetwork = None
+        self.bbu = None
+        self.hub = None
+        self.rru = None
+        self.nr_core = None
 
     def run(self):
         self._connection()
+
+    def thread_init(self):
+        self.bbu = BBUThread()
+        pass
 
     def _connection(self):
         self.connection = Connection('amqp://localhost:5672/')

@@ -39,6 +39,7 @@ class PublishThread(object):
         queue.maybe_bind(connection)
         queue.declare()
         producer.publish(message)
+        connection.close()
         print(message)
 
     # def __init__(self, amqp_url='amqp://localhost:5672/', exchange_name='example-exchange', route_key='BOB',):
