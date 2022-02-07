@@ -70,10 +70,10 @@ class PublishThread(object):
 
 if __name__ == "__main__":
     PublishThread.send_message(PublishThread, BBU_CONFIG_QUEUE,
-                               {TARGET_Thread: '5GC',
+                               {TARGET_Thread: 'BBU',
                                 MESSAGE:
                                     {
-                                     UNIT_ACTION: 'read',
-                                     ACTION_MEASSAGE: {MESSAGE_NAME: 'NR_EVM',
+                                     UNIT_ACTION: 'query',
+                                     ACTION_MEASSAGE: {MESSAGE_NAME: 'config_modify',
                                                        MESSAGE_ARGS: {}}},
                                 })

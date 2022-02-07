@@ -7,19 +7,18 @@
 """
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2 import QtCore, QtGui
-from PySide2.QtCore import Slot
 from UI.ThrouputTest import Ui_MainWindow
 import sys
 
 
 class EmittingStream(QtCore.QObject):
-    textwriten = QtCore.Signal(str)
+    def __init__(self, config_sinal):
+        QtCore.QObject.__init__(self)
+        self.textWrite = config_sinal
+        self.textWrite = QtCore.Signal(str)
 
     def write(self, text):
-        self.textwriten.emit(str(text))
-        loop = QtCore.QEventLoop()
-        QtCore.QTimer.singleShot(1000, loop.quit())
-        loop.exec_()
+        self.textWrite.emit(str(text))
 
 
 class BbuUi(QMainWindow):
@@ -27,20 +26,13 @@ class BbuUi(QMainWindow):
         QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # self.run()
-        sys.stdout = EmittingStream()
-        self.ui.textEdit.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-        sys.stderr = EmittingStream()
-        self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
+        self.run()
         self.ui.retranslateUi(self)
 
     def run(self):
-        sys.stdout = EmittingStream()
-        self.ui.textEdit.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-        sys.stderr = EmittingStream()
-        self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
+        sys.stdout = EmittingStream(config_sinal=self.outputwriten)
+        sys.stderr = EmittingStream(config_sinal=self.outputwriten)
 
-    @Slot()
     def outputwriten(self, text):
         cursor = self.ui.textEdit.textCursor()
         cursor.movePosition(QtGui.QTextCursor.End)

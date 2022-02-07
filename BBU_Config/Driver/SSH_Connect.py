@@ -8,7 +8,7 @@ import paramiko
 from loguru import logger
 
 
-class FtpConnect(object):
+class RemoteConnect(object):
     def __init__(self, ip='169.169.20.160', name='root', password='111111'):
         self.ip = ip
         self.name = name
@@ -67,7 +67,7 @@ class FtpConnect(object):
 
 
 if __name__ == "__main__":
-    a = FtpConnect()
+    a = RemoteConnect()
     a.run()
     a.sftp_download('/home/gnb/confdb.xml', r'D:\python\DXXXX\BBU_Config\BBUconfdb\confdb.xml')
     # b = a.ssh_set_command_signal('ls')

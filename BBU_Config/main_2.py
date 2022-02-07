@@ -27,11 +27,7 @@ class BbuUi(QMainWindow):
         QMainWindow.__init__(self, parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # self.run()
-        sys.stdout = EmittingStream()
-        self.ui.textEdit.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-        sys.stderr = EmittingStream()
-        self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
+        self.run()
         self.ui.retranslateUi(self)
 
     def run(self):

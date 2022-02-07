@@ -5,7 +5,7 @@
 @file: Control_Thread.py
 @time: 2022/01/13
 """
-
+import os
 import threading
 import pika
 from kombu import Connection, Queue
@@ -24,11 +24,13 @@ class ControlMessage(threading.Thread):
         self.nr_core = None
 
     def run(self):
+        self.thread_init()
         self._connection()
 
     def thread_init(self):
-        self.bbu = BBUThread()
-        pass
+        self.bbu = BBUThread('BBU_Thread')
+        self.bbu.start()
+        self.queue_init(BBU_CONFIG_QUEUE)
 
     def _connection(self):
         self.connection = Connection('amqp://localhost:5672/')
@@ -42,11 +44,18 @@ class ControlMessage(threading.Thread):
         if body_message[TARGET_Thread] == '5GC':
             core_thread = CoreNetworkThread('core_network')
             core_thread.thread_monitor()
+        elif body_message[TARGET_Thread] == 'BBU':
+            self.bbu.thread_monitor(body_message[MESSAGE])
+            pass
         print(body_message, message)
         message.ack()
+
+    def queue_init(self, queue_name):
+        os.system(f'rabbitmqctl purge_queue {queue_name}')
 
 
 if __name__ == '__main__':
     a = ControlMessage('message_control')
     a.run()
+    a.queue_init(BBU_CONFIG_QUEUE)
     print('Python')

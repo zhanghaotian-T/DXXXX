@@ -13,12 +13,18 @@ import yaml
 
 class CETCbbuEdite(BbuconfdbReconfig):
 
-    def __init__(self, file_path):
-        BbuconfdbReconfig.__init__(self, file_path)
+    def __init__(self, file_path='../BBUconfdb/confdb.xml'):
+        BbuconfdbReconfig.__init__(self, file_path='../BBUconfdb/confdb.xml')
         self.file_path = file_path
         self.edit_dict = dict()
 
     def run(self):
+        self.conf_get()
+        self.edit_dict_complete()
+        self.dict_key_value_replace()
+        self.xml_save()
+
+    def cetc_confdb_edit(self):
         self.conf_get()
         self.edit_dict_complete()
         self.dict_key_value_replace()
