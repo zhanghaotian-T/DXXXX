@@ -370,7 +370,7 @@ Access to this host and the information on it are lawfully available only for ap
    <services:security>
     <services:integrity>
      <services:priority>1</services:priority>
-     <services:algorithm>zuc</services:algorithm>
+     <services:algorithm>snow-3g</services:algorithm>
     </services:integrity>
     <services:integrity>
      <services:priority>2</services:priority>
@@ -378,7 +378,7 @@ Access to this host and the information on it are lawfully available only for ap
     </services:integrity>
     <services:ciphering>
      <services:priority>2</services:priority>
-     <services:algorithm>zuc</services:algorithm>
+     <services:algorithm>snow-3g</services:algorithm>
     </services:ciphering>
     <services:ciphering>
      <services:priority>1</services:priority>
@@ -409,7 +409,7 @@ Access to this host and the information on it are lawfully available only for ap
   </services:nbr-enb-defaults>
         <services:s1-mme>
             <services:mme-instance>1</services:mme-instance>
-            <services:mme-ipv4-address>10.88.120.164</services:mme-ipv4-address>
+            <services:mme-ipv4-address>10.88.120.80</services:mme-ipv4-address>
             <services:initial-context-setup-request-timer>70000</services:initial-context-setup-request-timer>
             <services:path-switch-ack-timer>2000</services:path-switch-ack-timer>
             <services:ue-context-release-command-timer>2000</services:ue-context-release-command-timer>
@@ -808,7 +808,7 @@ Access to this host and the information on it are lawfully available only for ap
     <services:ssb-subcarrier-spacing>30</services:ssb-subcarrier-spacing>
     <services:subcarrier-spacing-common>30</services:subcarrier-spacing-common>
     <services:dmrs-type-a-Position>pos2</services:dmrs-type-a-Position>
-    <services:pdcch-config-sib1>64</services:pdcch-config-sib1>
+    <services:pdcch-config-sib1>160</services:pdcch-config-sib1>
     <services:ssb-positions-in-burst-in-one-group>0x80</services:ssb-positions-in-burst-in-one-group>
    </services:ssb-config>
    <services:tdd-ul-dl-configuration-common>
@@ -1945,7 +1945,6 @@ Access to this host and the information on it are lawfully available only for ap
     <services:bwp-switch-rlc-data-filter>1</services:bwp-switch-rlc-data-filter>
     <services:bwp-switch-max-nb-grant>1</services:bwp-switch-max-nb-grant>
     <services:bwp-switch-min-time-frozen>20000</services:bwp-switch-min-time-frozen>
-    <services:bwp-switch-min-time-frozen-while-init-access>40000</services:bwp-switch-min-time-frozen-while-init-access>
     <services:bwp-switch-rlc-data-threshold-low>0</services:bwp-switch-rlc-data-threshold-low>
     <services:bwp-switch-rlc-data-threshold-high>4294967295</services:bwp-switch-rlc-data-threshold-high>
     <services:link-adaptation>
@@ -2084,7 +2083,7 @@ Access to this host and the information on it are lawfully available only for ap
      <!--Antenna-ul: layer=4,layer=2,layer=1-->
      <services:pusch-mcs-table>qam64</services:pusch-mcs-table>
      <!--enum{0.qam64 1.qam256 2.qam64LowSE}-->
-     <services:pucchScenario>0</services:pucchScenario>
+     <services:pucchScenario>1</services:pucchScenario>
      <!--enum{-1:customize 0:3 UEs 1:256 UEs 2:400 UEs 3:500 UEs}-->
      
    <services:customizePucchUeProfile>
@@ -2107,12 +2106,12 @@ Access to this host and the information on it are lawfully available only for ap
 	const uint8_t PUCCH_CAPACITY_FMT3_ACK = 6;
 	const uint8_t PUCCH_CAPACITY_FMT3_CSI = 32;   
    -->
-    <services:ueNum>256</services:ueNum>
-    <services:fmt1SrResCell>26</services:fmt1SrResCell>
-    <services:fmt1AckResCell>8</services:fmt1AckResCell>
+    <services:ueNum>500</services:ueNum>
+    <services:fmt1SrResCell>150</services:fmt1SrResCell>
+    <services:fmt1AckResCell>500</services:fmt1AckResCell>
     <services:fmt3AckResCell>6</services:fmt3AckResCell>
     <services:fmt3CsiResCell>16</services:fmt3CsiResCell>
-    <services:fmt1AckResUe>8</services:fmt1AckResUe>
+    <services:fmt1AckResUe>20</services:fmt1AckResUe>
     <services:fmt3AckResUe>6</services:fmt3AckResUe>
     <services:fmt3CsiResUe>1</services:fmt3CsiResUe>
    </services:customizePucchUeProfile>
@@ -2207,7 +2206,7 @@ Access to this host and the information on it are lawfully available only for ap
      </services:pusch-config>
     </services:ul>
     <services:dl>
-     <services:dl-layers>4</services:dl-layers>
+     <services:dl-layers>2</services:dl-layers>
      <services:dl-antennas>4</services:dl-antennas>
      <!--Antenna-dl: layer=4,layer=2,layer=1-->
      <services:dmrs-epreratio-to-ssb>8</services:dmrs-epreratio-to-ssb>
@@ -2268,7 +2267,7 @@ Access to this host and the information on it are lawfully available only for ap
       <services:pdsch-resource-allocation-type>1</services:pdsch-resource-allocation-type>
       <services:pdsch-rbg-size>config1</services:pdsch-rbg-size>
       <!--enum{0.config1 1.config2}-->
-      <services:additionalDmrsPosition>1</services:additionalDmrsPosition>
+      <services:additionalDmrsPosition>0</services:additionalDmrsPosition>
 	    <services:nrOfPDSCHRepetition>1</services:nrOfPDSCHRepetition>
      </services:pdsch-config>
      <services:max-num-harq-re-tx-ccch>4</services:max-num-harq-re-tx-ccch>
@@ -2739,9 +2738,6 @@ Access to this host and the information on it are lawfully available only for ap
     <services:port>18011</services:port> 
     <services:mask>255.255.255.0</services:mask>
    </services:network>
-   <services:type>
-    <services:rru-centre-freq-offset-in-kHz>0</services:rru-centre-freq-offset-in-kHz>
-   </services:type>
   </services:rru>
   <services:nzpCsiRs>
    <services:Periodicity4Cqi>160</services:Periodicity4Cqi>

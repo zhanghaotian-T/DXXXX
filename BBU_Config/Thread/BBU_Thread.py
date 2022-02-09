@@ -53,8 +53,10 @@ class BBUThread(threading.Thread):
 
     def thread_query_action(self, action_message_dict=dict):
         if action_message_dict[MESSAGE_NAME] == 'config_modify':
-            self.bbu_thread_config_modify(action_message_dict[MESSAGE_ARGS])
-        pass
+            return_args = self.bbu_thread_config_modify(action_message_dict[MESSAGE_ARGS])
+        else:
+            return_args = None
+        return return_args
 
     def bbu_thread_config_modify(self, message_args=dict):
         print('进入处理程序')
@@ -62,7 +64,8 @@ class BBUThread(threading.Thread):
         self.bbu_remote.sftp_download('/home/gnb/confdb.xml', r'D:\python\DXXXX\BBU_Config\BBUconfdb\confdb.xml')
         confdb_edit = CETCbbuEdite()
         confdb_edit.cetc_confdb_edit()
-        self.bbu_remote.sftp_upload()
+        # self.bbu_remote.sftp_upload()
+        return True
 
 
 if __name__ == '__main__':
