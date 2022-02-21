@@ -18,8 +18,9 @@ class EmittingStream(QtCore.QObject):
     def write(self, text):
         self.textwriten.emit(str(text))
         loop = QtCore.QEventLoop()
-        QtCore.QTimer.singleShot(1000, loop.quit())
+        QtCore.QTimer.singleShot(5000, loop.quit)
         loop.exec_()
+        QApplication.processEvents()
 
 
 class BbuUi(QMainWindow):
@@ -29,6 +30,10 @@ class BbuUi(QMainWindow):
         self.ui.setupUi(self)
         # self.run()
         sys.stdout = EmittingStream()
+        # sys.stdout.textwriten.connect(self.outputwriten)
+        # sys.stderr = EmittingStream()
+        # sys.stderr.textwriten.connect(self.outputwriten)
+
         self.ui.textEdit.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
         sys.stderr = EmittingStream()
         self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
@@ -40,7 +45,6 @@ class BbuUi(QMainWindow):
         sys.stderr = EmittingStream()
         self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
 
-    @Slot()
     def outputwriten(self, text):
         cursor = self.ui.textEdit.textCursor()
         cursor.movePosition(QtGui.QTextCursor.End)

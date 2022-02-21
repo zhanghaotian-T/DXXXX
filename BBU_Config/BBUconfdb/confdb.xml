@@ -386,7 +386,7 @@ Access to this host and the information on it are lawfully available only for ap
     </services:ciphering>
    </services:security>
    <services:freq-band-list-filter>
-    <services:band>78</services:band>
+    <services:band>41</services:band>
     <services:max-bandwidth-requested-dl>mhz200</services:max-bandwidth-requested-dl>
     <services:max-bandwidth-requested-ul>mhz200</services:max-bandwidth-requested-ul>
     <services:max-carriers-requested-dl>2</services:max-carriers-requested-dl>
@@ -394,7 +394,7 @@ Access to this host and the information on it are lawfully available only for ap
    </services:freq-band-list-filter>
   </services:gnb>
   <services:nr-band>
-   <services:band>78</services:band>
+   <services:band>41</services:band>
    <services:f-dl-low>3300.0</services:f-dl-low>
    <services:f-dl-high>4200.0</services:f-dl-high>
    <services:n-offset-dl>620000</services:n-offset-dl>
@@ -2656,7 +2656,7 @@ Access to this host and the information on it are lawfully available only for ap
      <services:neighbor-freq-nr-id>1</services:neighbor-freq-nr-id>
      <services:ssb-frequency>630720</services:ssb-frequency>
      <services:ssb-sub-carrier-spacing>kHz30</services:ssb-sub-carrier-spacing>
-     <services:band>78</services:band>
+     <services:band>41</services:band>
      <services:smtc1>
        <services:periodicity>sf20</services:periodicity>
        <services:offset>9</services:offset>
@@ -2688,7 +2688,7 @@ Access to this host and the information on it are lawfully available only for ap
      <services:neighbor-freq-nr-id>2</services:neighbor-freq-nr-id>
      <services:ssb-frequency>630720</services:ssb-frequency>
      <services:ssb-sub-carrier-spacing>kHz30</services:ssb-sub-carrier-spacing>
-     <services:band>78</services:band>
+     <services:band>41</services:band>
      <services:smtc1>
        <services:periodicity>sf20</services:periodicity>
        <services:offset>0</services:offset>
