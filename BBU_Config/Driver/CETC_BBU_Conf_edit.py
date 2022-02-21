@@ -41,10 +41,10 @@ class CETCbbuEdite(BbuconfdbReconfig):
             ssb_offset = 4
             abs_ssb_freq = 630720
             abs_point_a = 630164
-            pdcch_config_sib = 64
+            pdcch_config_sib = 160
             msg_lenghth = 400
         elif self.edit_dict['services:band'] == 79:
-            ssb_offset = 6
+            ssb_offset = 12
             abs_ssb_freq = 721824
             abs_point_a = 720060
             pdcch_config_sib = 64

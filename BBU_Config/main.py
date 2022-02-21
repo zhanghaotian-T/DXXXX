@@ -18,9 +18,24 @@ class EmittingStream(QtCore.QObject):
     def write(self, text):
         self.textwriten.emit(str(text))
         loop = QtCore.QEventLoop()
-        QtCore.QTimer.singleShot(5000, loop.quit)
+        QtCore.QTimer.singleShot(1000, loop.quit)
         loop.exec_()
         QApplication.processEvents()
+
+
+class UpdateWindows(QtCore.QThread):
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        sys.stdout = EmittingStream()
+        sys.stdout.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), parent.outputwriten)
+        sys.stderr = EmittingStream()
+        sys.stderr.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), parent.outputwriten)
+
+    def run(self):
+        while True:
+            # print('1111')
+            pass
 
 
 class BbuUi(QMainWindow):
@@ -58,4 +73,7 @@ if __name__ == '__main__':
     widget = BbuUi()
     # widget.resize(800, 600)
     widget.show()
+    worker = UpdateWindows(widget)
+    worker.start()
+    print('1111')
     sys.exit(app.exec_())

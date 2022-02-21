@@ -69,11 +69,19 @@ class PublishThread(object):
 
 
 if __name__ == "__main__":
+    # PublishThread.send_message(PublishThread, BBU_CONFIG_QUEUE,
+    #                            {TARGET_Thread: 'BBU',
+    #                             MESSAGE:
+    #                                 {
+    #                                  UNIT_ACTION: 'query',
+    #                                  ACTION_MEASSAGE: {MESSAGE_NAME: 'config_modify',
+    #                                                    MESSAGE_ARGS: {}}},
+    #                             })
     PublishThread.send_message(PublishThread, BBU_CONFIG_QUEUE,
                                {TARGET_Thread: 'BBU',
                                 MESSAGE:
                                     {
-                                     UNIT_ACTION: 'query',
-                                     ACTION_MEASSAGE: {MESSAGE_NAME: 'config_modify',
-                                                       MESSAGE_ARGS: {}}},
+                                        UNIT_ACTION: 'write',
+                                        ACTION_MEASSAGE: {MESSAGE_NAME: 'bbu_start',
+                                                          MESSAGE_ARGS: {}}},
                                 })

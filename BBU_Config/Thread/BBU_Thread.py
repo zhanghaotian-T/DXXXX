@@ -28,15 +28,14 @@ class BBUThread(threading.Thread):
     def _connect(self):
         if self.bbu_type == 'CETC':
             self.bbu_remote = RemoteConnect(ip=self.ip)
-            pass
-        pass
+            self.bbu_remote.ssh_connect()
 
     def thread_monitor(self, message_args=dict):
         try:
             if message_args[UNIT_ACTION] == 'read':
                 pass
             elif message_args[UNIT_ACTION] == 'write':
-                pass
+                self.thread_write_action(message_args[ACTION_MEASSAGE])
             elif message_args[UNIT_ACTION] == 'query':
                 self.thread_query_action(message_args[ACTION_MEASSAGE])
                 pass
@@ -48,13 +47,19 @@ class BBUThread(threading.Thread):
     def thread_read_action(self):
         pass
 
-    def thread_write_action(self):
-        pass
+    def thread_write_action(self, action_message_dict=dict):
+        if action_message_dict[MESSAGE_NAME] == 'bbu_start':
+            return_args = self.bbu_start(action_message_dict[MESSAGE_ARGS])
+        else:
+            return_args = None
+        return return_args
 
     def thread_query_action(self, action_message_dict=dict):
         if action_message_dict[MESSAGE_NAME] == 'config_modify':
-            self.bbu_thread_config_modify(action_message_dict[MESSAGE_ARGS])
-        pass
+            return_args = self.bbu_thread_config_modify(action_message_dict[MESSAGE_ARGS])
+        else:
+            return_args = None
+        return return_args
 
     def bbu_thread_config_modify(self, message_args=dict):
         print('进入处理程序')
@@ -62,7 +67,15 @@ class BBUThread(threading.Thread):
         self.bbu_remote.sftp_download('/home/gnb/confdb.xml', r'D:\python\DXXXX\BBU_Config\BBUconfdb\confdb.xml')
         confdb_edit = CETCbbuEdite()
         confdb_edit.cetc_confdb_edit()
-        self.bbu_remote.sftp_upload()
+        # self.bbu_remote.sftp_upload()
+        return True
+
+    def bbu_start(self, message_args=dict):
+        return_command = self.bbu_remote.exec('/./home/gnb/x v')
+        logger.info(return_command)
+        return_command2 = self.bbu_remote.exec('/./home/gnb/x v')
+        logger.info(return_command2)
+        return True
 
 
 if __name__ == '__main__':

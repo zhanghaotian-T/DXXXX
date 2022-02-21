@@ -370,7 +370,7 @@ Access to this host and the information on it are lawfully available only for ap
    <services:security>
     <services:integrity>
      <services:priority>1</services:priority>
-     <services:algorithm>zuc</services:algorithm>
+     <services:algorithm>snow-3g</services:algorithm>
     </services:integrity>
     <services:integrity>
      <services:priority>2</services:priority>
@@ -378,7 +378,7 @@ Access to this host and the information on it are lawfully available only for ap
     </services:integrity>
     <services:ciphering>
      <services:priority>2</services:priority>
-     <services:algorithm>zuc</services:algorithm>
+     <services:algorithm>snow-3g</services:algorithm>
     </services:ciphering>
     <services:ciphering>
      <services:priority>1</services:priority>
@@ -409,7 +409,7 @@ Access to this host and the information on it are lawfully available only for ap
   </services:nbr-enb-defaults>
         <services:s1-mme>
             <services:mme-instance>1</services:mme-instance>
-            <services:mme-ipv4-address>10.88.120.164</services:mme-ipv4-address>
+            <services:mme-ipv4-address>10.88.120.80</services:mme-ipv4-address>
             <services:initial-context-setup-request-timer>70000</services:initial-context-setup-request-timer>
             <services:path-switch-ack-timer>2000</services:path-switch-ack-timer>
             <services:ue-context-release-command-timer>2000</services:ue-context-release-command-timer>
@@ -708,8 +708,8 @@ Access to this host and the information on it are lawfully available only for ap
      <services:inter-freq>
       <services:nbr-frequency>
        <services:instance>1</services:instance>
-       <services:ssb-frequency>630720</services:ssb-frequency>
-       <services:ref-freq-csi-rs>630720</services:ref-freq-csi-rs>
+       <services:ssb-frequency>504990</services:ssb-frequency>
+       <services:ref-freq-csi-rs>504990</services:ref-freq-csi-rs>
        <services:offset-freq>0</services:offset-freq>
       </services:nbr-frequency>
       <services:event>
@@ -808,7 +808,7 @@ Access to this host and the information on it are lawfully available only for ap
     <services:ssb-subcarrier-spacing>30</services:ssb-subcarrier-spacing>
     <services:subcarrier-spacing-common>30</services:subcarrier-spacing-common>
     <services:dmrs-type-a-Position>pos2</services:dmrs-type-a-Position>
-    <services:pdcch-config-sib1>64</services:pdcch-config-sib1>
+    <services:pdcch-config-sib1>160</services:pdcch-config-sib1>
     <services:ssb-positions-in-burst-in-one-group>0x80</services:ssb-positions-in-burst-in-one-group>
    </services:ssb-config>
    <services:tdd-ul-dl-configuration-common>
@@ -1010,9 +1010,9 @@ Access to this host and the information on it are lawfully available only for ap
     <services:dl-bandwidth>100</services:dl-bandwidth>
     <services:ul-bandwidth>100</services:ul-bandwidth>
     <services:frequency-info-dl>
-    <services:ssb-subcarrier-offset>4</services:ssb-subcarrier-offset>
-     <services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
-     <services:absolute-frequency-point-a>630164</services:absolute-frequency-point-a>
+    <services:ssb-subcarrier-offset>6</services:ssb-subcarrier-offset>
+     <services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
+     <services:absolute-frequency-point-a>503172</services:absolute-frequency-point-a>
      <services:scs-specific-carrier-list>
        <services:instance>1</services:instance>
        <services:offset-to-carrier>0</services:offset-to-carrier>
@@ -1021,7 +1021,7 @@ Access to this host and the information on it are lawfully available only for ap
      </services:scs-specific-carrier-list>
     </services:frequency-info-dl>
     <services:frequency-info-ul>
-     <services:absolute-frequency-point-a>630164</services:absolute-frequency-point-a>
+     <services:absolute-frequency-point-a>503172</services:absolute-frequency-point-a>
      <services:scs-specific-carrier-list>
        <services:instance>1</services:instance>
        <services:offset-to-carrier>0</services:offset-to-carrier>
@@ -1945,7 +1945,6 @@ Access to this host and the information on it are lawfully available only for ap
     <services:bwp-switch-rlc-data-filter>1</services:bwp-switch-rlc-data-filter>
     <services:bwp-switch-max-nb-grant>1</services:bwp-switch-max-nb-grant>
     <services:bwp-switch-min-time-frozen>20000</services:bwp-switch-min-time-frozen>
-    <services:bwp-switch-min-time-frozen-while-init-access>40000</services:bwp-switch-min-time-frozen-while-init-access>
     <services:bwp-switch-rlc-data-threshold-low>0</services:bwp-switch-rlc-data-threshold-low>
     <services:bwp-switch-rlc-data-threshold-high>4294967295</services:bwp-switch-rlc-data-threshold-high>
     <services:link-adaptation>
@@ -2084,7 +2083,7 @@ Access to this host and the information on it are lawfully available only for ap
      <!--Antenna-ul: layer=4,layer=2,layer=1-->
      <services:pusch-mcs-table>qam64</services:pusch-mcs-table>
      <!--enum{0.qam64 1.qam256 2.qam64LowSE}-->
-     <services:pucchScenario>0</services:pucchScenario>
+     <services:pucchScenario>1</services:pucchScenario>
      <!--enum{-1:customize 0:3 UEs 1:256 UEs 2:400 UEs 3:500 UEs}-->
      
    <services:customizePucchUeProfile>
@@ -2107,12 +2106,12 @@ Access to this host and the information on it are lawfully available only for ap
 	const uint8_t PUCCH_CAPACITY_FMT3_ACK = 6;
 	const uint8_t PUCCH_CAPACITY_FMT3_CSI = 32;   
    -->
-    <services:ueNum>256</services:ueNum>
-    <services:fmt1SrResCell>26</services:fmt1SrResCell>
-    <services:fmt1AckResCell>8</services:fmt1AckResCell>
+    <services:ueNum>500</services:ueNum>
+    <services:fmt1SrResCell>150</services:fmt1SrResCell>
+    <services:fmt1AckResCell>500</services:fmt1AckResCell>
     <services:fmt3AckResCell>6</services:fmt3AckResCell>
     <services:fmt3CsiResCell>16</services:fmt3CsiResCell>
-    <services:fmt1AckResUe>8</services:fmt1AckResUe>
+    <services:fmt1AckResUe>20</services:fmt1AckResUe>
     <services:fmt3AckResUe>6</services:fmt3AckResUe>
     <services:fmt3CsiResUe>1</services:fmt3CsiResUe>
    </services:customizePucchUeProfile>
@@ -2654,7 +2653,7 @@ Access to this host and the information on it are lawfully available only for ap
    <services:nbr-cell-config/>
    <services:neighbor-freq-nr>
      <services:neighbor-freq-nr-id>1</services:neighbor-freq-nr-id>
-     <services:ssb-frequency>630720</services:ssb-frequency>
+     <services:ssb-frequency>504990</services:ssb-frequency>
      <services:ssb-sub-carrier-spacing>kHz30</services:ssb-sub-carrier-spacing>
      <services:band>41</services:band>
      <services:smtc1>
@@ -2680,13 +2679,13 @@ Access to this host and the information on it are lawfully available only for ap
          <services:q-offset-freq>none</services:q-offset-freq>
        </services:inter-freq>
        <services:frquency-band-list>
-         <services:freq-band-indicator>78</services:freq-band-indicator>
+         <services:freq-band-indicator>41</services:freq-band-indicator>
        </services:frquency-band-list>
      </services:cell-reselection> 
    </services:neighbor-freq-nr>
    <services:neighbor-freq-nr>
      <services:neighbor-freq-nr-id>2</services:neighbor-freq-nr-id>
-     <services:ssb-frequency>630720</services:ssb-frequency>
+     <services:ssb-frequency>504990</services:ssb-frequency>
      <services:ssb-sub-carrier-spacing>kHz30</services:ssb-sub-carrier-spacing>
      <services:band>41</services:band>
      <services:smtc1>
@@ -2739,9 +2738,6 @@ Access to this host and the information on it are lawfully available only for ap
     <services:port>18011</services:port> 
     <services:mask>255.255.255.0</services:mask>
    </services:network>
-   <services:type>
-    <services:rru-centre-freq-offset-in-kHz>0</services:rru-centre-freq-offset-in-kHz>
-   </services:type>
   </services:rru>
   <services:nzpCsiRs>
    <services:Periodicity4Cqi>160</services:Periodicity4Cqi>
@@ -2756,72 +2752,72 @@ Access to this host and the information on it are lawfully available only for ap
 	<services:scanning-freq>
 		<services:candidate-freq>
 			<services:instance>1</services:instance>
-			<services:absolute-frequency-point-a>630164</services:absolute-frequency-point-a>
+			<services:absolute-frequency-point-a>503172</services:absolute-frequency-point-a>
 			<services:absolute-prb-low>0</services:absolute-prb-low>
 			<services:absolute-prb-high>161</services:absolute-prb-high>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>1</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>1</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>48</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>2</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>57</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>104</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>3</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>113</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>160</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 		</services:candidate-freq>
 		<services:candidate-freq>
 			<services:instance>2</services:instance>
-			<services:absolute-frequency-point-a>630164</services:absolute-frequency-point-a>
+			<services:absolute-frequency-point-a>503172</services:absolute-frequency-point-a>
 			<services:absolute-prb-low>55</services:absolute-prb-low>
 			<services:absolute-prb-high>216</services:absolute-prb-high>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>1</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>57</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>104</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>2</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>113</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>160</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>3</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>169</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>216</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 		</services:candidate-freq>
 		<services:candidate-freq>
 			<services:instance>3</services:instance>
-			<services:absolute-frequency-point-a>630164</services:absolute-frequency-point-a>
+			<services:absolute-frequency-point-a>503172</services:absolute-frequency-point-a>
 			<services:absolute-prb-low>111</services:absolute-prb-low>
 			<services:absolute-prb-high>272</services:absolute-prb-high>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>1</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>113</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>160</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>2</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>169</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>216</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>
 			<services:candidate-ssb-list>
 				<services:candidate-ssb-list-instance>3</services:candidate-ssb-list-instance>
-				<services:absolute-frequency-ssb>630720</services:absolute-frequency-ssb>
+				<services:absolute-frequency-ssb>504990</services:absolute-frequency-ssb>
 				<services:absolute-coreset0-prb-low>225</services:absolute-coreset0-prb-low>
 				<services:absolute-coreset0-prb-high>272</services:absolute-coreset0-prb-high>
 			</services:candidate-ssb-list>

@@ -1,5 +1,5 @@
 services:amf-ipv4-address: 169.169.20.177
-services:band: 78
+services:band: 41
 services:plmn-id: 46099
 services:extend-tracking-area-code: 4386
 
