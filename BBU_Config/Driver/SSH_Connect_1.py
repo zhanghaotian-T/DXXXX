@@ -3,8 +3,6 @@
 # @FileName  :SSH_Connect.py
 # @Time      :2021/12/22 23:13
 # @Author    :Haotian
-import socket
-import time
 
 import paramiko
 from loguru import logger
@@ -19,7 +17,6 @@ class RemoteConnect(object):
         self.p_sftp = None
         self.sftp = None
         self.ssh = None
-        self.__channel = None
 
         self.__ansi_escape = re.compile(r'''
                         \x1B  # ESC
@@ -59,61 +56,17 @@ class RemoteConnect(object):
     def ssh_close(self):
         pass
 
-    def __match(self, out_str: str, end_str: list):
-        result = self.__ansi_escape.sub('', out_str)
-        for it in end_str:
-            if result.endswith(it):
-                return True, result
-        return False, result
-
-    def __recv(self, channel, end_str, timeout):
-        result = ''
-        out_str = ''
-        max_wait_time = timeout * 1000
-        channel.settimeout(0.05)
-        while max_wait_time > 0:
-            try:
-                out = channel.recv(1024 * 1024).decode()
-                if not out or out == '':
-                    continue
-                out_str = out_str + out
-                match, result = self.__match(out_str, end_str)
-                if match is True:
-                    return result.strip()
-                else:
-                    max_wait_time -=50
-            except socket.timeout:
-                max_wait_time -= 50
-        raise Exception('recv data timeout')
-
-    def exec(self, cmd: str, end_str=('# ', '$ ', '? ', '% ',), timeout=30) -> str:
-        if not self.__channel:
-            self.__channel = self.ssh.invoke_shell(term='xterm', width=4096, height=48)
-            time.sleep(0.02)
-            self.__channel.recv(4096).decode()
-
-        if cmd.endswith('\n'):
-            self.__channel.send(cmd)
-        else:
-            self.__channel.send(cmd + '\n')
-        result = self.__recv(self.__channel, end_str, timeout)
-        begin_pos = result.find('\r\n')
-        end_pos = result.rfind('\r\n')
-        logger.info(result[begin_pos + 2:end_pos])
-        if begin_pos == end_pos:
-            return ''
-        return result[begin_pos + 2:end_pos]
-
-        # try:
-        #     stdin, stdout, stdrr = self.ssh.exec_command(command)
-        #     result = stdout.read().decode('utf-8')
-        #     logger.info(result)
-        #     # for line in stdrr.readlines():
-        #     #     logger.info(line + ' ')
-        #     # return True
-        #     # return stdout.read().decode()
-        # except Exception as error:
-        #     logger.error(f'one error: {error} append in set command: {command}, ')
+    def ssh_set_command_signal(self, command):
+        try:
+            stdin, stdout, stdrr = self.ssh.exec_command(command)
+            result = stdout.read().decode('utf-8')
+            logger.info(result)
+            # for line in stdrr.readlines():
+            #     logger.info(line + ' ')
+            # return True
+            # return stdout.read().decode()
+        except Exception as error:
+            logger.error(f'one error: {error} append in set command: {command}, ')
 
     def sftp_download(self, remote_path, local_path):
         try:
@@ -131,13 +84,9 @@ class RemoteConnect(object):
         pass
 
     def __del__(self):
-        self.__close()
+        pass
 
-    def __close(self):
-        if not self.ssh:
-            return
-        self.ssh.close()
-        self.ssh = None
+    
 
 
 if __name__ == "__main__":

@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56e74668-0553-43e9-89ff-350aed6a0206" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/../BBU_Config/Driver/lunix_set.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BBU_Config/BBUconfdb/confdb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BBU_Config/BBUconfdb/confdb.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BBU_Config/BBUconfig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../BBU_Config/BBUconfig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BBU_Config/Driver/Publish_Thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BBU_Config/Driver/Publish_Thread.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BBU_Config/Driver/SSH_Connect_1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mysite/polls/templates/polls/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BBU_Config/Driver/SSH_Connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BBU_Config/Driver/SSH_Connect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BBU_Config/Thread/BBU_Thread.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BBU_Config/Thread/BBU_Thread.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/polls/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

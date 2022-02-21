@@ -71,9 +71,9 @@ class BBUThread(threading.Thread):
         return True
 
     def bbu_start(self, message_args=dict):
-        return_command = self.bbu_remote.ssh_set_command_signal('./home/gnb/x v')
+        return_command = self.bbu_remote.exec('/./home/gnb/x v')
         logger.info(return_command)
-        return_command2 = self.bbu_remote.ssh_set_command_signal('./home/gnb/x v')
+        return_command2 = self.bbu_remote.exec('/./home/gnb/x v')
         logger.info(return_command2)
         return True
 
