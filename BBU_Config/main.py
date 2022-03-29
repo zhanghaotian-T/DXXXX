@@ -1,79 +1,36 @@
-#!usr/bin/env python
-# -*- coding:utf-8 -*
-"""
-@author:Haotian
-@file: main_1.py
-@time: 2022/02/04
-"""
-from PySide2.QtWidgets import QApplication, QMainWindow
-from PySide2 import QtCore, QtGui
-from PySide2.QtCore import Slot
-from UI.ThrouputTest import Ui_MainWindow
 import sys
+import logging
+
+from functools import partial
+from PySide2.QtWidgets import QApplication, QWidget, QPushButton
+from PySide2 import QtCore
 
 
-class EmittingStream(QtCore.QObject):
-    textwriten = QtCore.Signal(str)
+class Obj(QtCore.QObject, logging.Handler):
+    sig = QtCore.Signal(dict)
 
-    def write(self, text):
-        self.textwriten.emit(str(text))
-        loop = QtCore.QEventLoop()
-        QtCore.QTimer.singleShot(1000, loop.quit)
-        loop.exec_()
-        QApplication.processEvents()
+    def __init__(self):
+        QtCore.QObject.__init__(self)
+        logging.Handler.__init__(self)
 
-
-class UpdateWindows(QtCore.QThread):
-
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        sys.stdout = EmittingStream()
-        sys.stdout.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), parent.outputwriten)
-        sys.stderr = EmittingStream()
-        sys.stderr.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), parent.outputwriten)
-
-    def run(self):
-        while True:
-            # print('1111')
-            pass
+    def emit(self, logRecord):
+        # This is intended to be logging.Handler 
+        # implementation of emit, not the QObject one
+        self.sig.emit({"a":123, "b":321})
 
 
-class BbuUi(QMainWindow):
-    def __init__(self, parent=None):
-        QMainWindow.__init__(self, parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        # self.run()
-        sys.stdout = EmittingStream()
-        # sys.stdout.textwriten.connect(self.outputwriten)
-        # sys.stderr = EmittingStream()
-        # sys.stderr.textwriten.connect(self.outputwriten)
-
-        self.ui.textEdit.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-        sys.stderr = EmittingStream()
-        self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-        self.ui.retranslateUi(self)
-
-    def run(self):
-        sys.stdout = EmittingStream()
-        self.ui.textEdit.connect(sys.stdout, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-        sys.stderr = EmittingStream()
-        self.ui.textEdit.connect(sys.stderr, QtCore.SIGNAL("textwriten(QString)"), self.outputwriten)
-
-    def outputwriten(self, text):
-        cursor = self.ui.textEdit.textCursor()
-        cursor.movePosition(QtGui.QTextCursor.End)
-        cursor.insertText(text)
-        self.ui.textEdit.setTextCursor(cursor)
-        self.ui.textEdit.ensureCursorVisible()
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    widget = BbuUi()
-    # widget.resize(800, 600)
-    widget.show()
-    worker = UpdateWindows(widget)
-    worker.start()
-    print('1111')
-    sys.exit(app.exec_())
+
+    handler = Obj()
+
+    logger = logging.getLogger(name='test')
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(handler)
+
+    w = QWidget()
+    b = QPushButton(w)
+    b.clicked.connect(partial(logger.debug, "ASD"))
+    w.show()
+
+    app.exec_()
