@@ -2,20 +2,40 @@ import re
 import sys
 
 from ui.MainWindow import Ui_MainWindow
-from PySide2.QtWidgets import QMainWindow, QApplication
+from PySide6.QtWidgets import QMainWindow, QApplication, QTextBrowser
+from loguru import logger
+import logging
 
 
-class DelayCaculate(QMainWindow):
-    def __init__(self):
-        super(DelayCaculate, self).__init__()
+class QPlainTextEditeLoggrt(logging.Handler):
+    def __init__(self, parent):
+        super().__init__()
+        self.widget = QTextBrowser(parent)
+        self.widget.setReadOnly(True)
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.widget.append(msg)
+        # self.widget.appendHtml(msg)
+
+
+class DelayCaculate(QMainWindow, QPlainTextEditeLoggrt):
+    def __init__(self, parent=None):
+        super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.run()
 
     def run(self):
         self.promt_message()
+        self.logger_handle_transfer()
         self.ui.pushButton.clicked.connect(self.detect_input)
         self.ui.lineEdit_2.returnPressed.connect(self.caculate_time)
+
+    def logger_handle_transfer(self):
+        _logger_text_broswer = QPlainTextEditeLoggrt(self)
+        logger.add(_logger_text_broswer)
+        self.ui.verticalLayout_4.addWidget(_logger_text_broswer.widget)
 
     def promt_message(self):
         self.ui.lineEdit.setText('0x')
@@ -30,6 +50,7 @@ class DelayCaculate(QMainWindow):
         try:
             if len(self.ui.lineEdit.text()) > 2:
                 self.primary_caculate_time()
+                logger.info(f'Current Delay Register input {self.ui.lineEdit.text()}')
             elif len(self.ui.lineEdit_3.text()) > 2:
                 self.time_to_hex()
         except Exception as e:
@@ -44,12 +65,13 @@ class DelayCaculate(QMainWindow):
                 self.ui.comboBox.setCurrentText('Forward')
                 primary_time = round(((65536 - primary_time_int) / 122.88), 2)
                 self.ui.lineEdit_3.setText(str(primary_time) + chr(0x0075) + 's')
+                
             else:
                 self.ui.comboBox.setCurrentText('Delay')
                 primary_time = round((primary_time_int / 122.88), 2)
                 self.ui.lineEdit_3.setText(str(primary_time) + chr(0x0075) + 's')
         except Exception as e:
-            print(e)
+            logger.info(e)
 
     def time_to_hex(self):
         fix_time = self.ui.comboBox.currentText()
@@ -103,4 +125,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     windows = DelayCaculate()
     windows.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
