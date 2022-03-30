@@ -65,7 +65,7 @@ class DelayCaculate(QMainWindow, QPlainTextEditeLoggrt):
                 self.ui.comboBox.setCurrentText('Forward')
                 primary_time = round(((65536 - primary_time_int) / 122.88), 2)
                 self.ui.lineEdit_3.setText(str(primary_time) + chr(0x0075) + 's')
-                
+
             else:
                 self.ui.comboBox.setCurrentText('Delay')
                 primary_time = round((primary_time_int / 122.88), 2)

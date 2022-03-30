@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
-    <height>359</height>
+    <width>612</width>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>TextLabel</string>
+            <string>Current_Delay_Time</string>
            </property>
           </widget>
          </item>
@@ -166,7 +166,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>550</width>
+     <width>612</width>
      <height>22</height>
     </rect>
    </property>
